@@ -152,6 +152,16 @@ Aplicação em HTML:
 ```
 **Obs:** Vale dizer que a posição do menu não importa (Em cima, embaixo ou intercalado por outro elemento)
 
+**Autoplay**
+
+É possível aplicar autoplay nas abas, para fazer isso, basta aplicar data-autoplay no data-tab-menu
+```html
+<ul data-tab-menu="exemplo" data-autoplay>
+  <li class="ativo">Aba 1</li>
+  <li>Aba 2</li>
+</ul>
+```
+
 ## toggleButton
 
 Este modulo auxiliar a criação de botões para exibirem ou fecharem outros elementos, neste modulo, diferente do Modal, qualquer clique fora do elemento vai fecha-lo. É útil para criação de menus mobile, dropdowns onClick, entre outros.
