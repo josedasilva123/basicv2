@@ -1,5 +1,5 @@
 # basicv2
-Basic é um framework muito simples em Javascript e SCSS criado para facilitar a criação de front-end para websites. 
+Basic é um framework muito simples em Javascript e SCSS criado para facilitar a criação de front-end para websites. O objetivo é entregar funcionalidades que são recorrentes na criação de sites com mínimo de CSS possível, para que a customização possa ser fácil e livre.
 
 O Basic é divido em módulos, e abaixo consta a documentação de como utilizar cada um deles...
 
@@ -171,7 +171,7 @@ Aplicação em HTML:
 ```html
 <nav>
   <div class="b-menu-toggle-box">
-    <div class="b-menu-toggle b-mobile" data-toggle="exemplo"> 
+    <div class="b-mobile" data-toggle="exemplo"> 
       Botão Menu
     </div> 
   </div>   
@@ -193,10 +193,10 @@ Aplicação em HTML:
 ```html
 <nav>
   <div class="b-menu-toggle-box">
-    <div class="b-menu-toggle b-mobile ativo" data-toggle="exemplo"> 
+    <div class="b-mobile ativo" data-toggle="exemplo"> 
       Abre Menu
     </div> 
-    <div class="b-menu-toggle b-mobile" data-toggle="exemplo"> 
+    <div class="b-mobile" data-toggle="exemplo"> 
       Fecha Menu
     </div> 
   </div>   
@@ -212,3 +212,23 @@ Aplicação em HTML:
   </li>
 </nav> 
 ```
+
+**Uso simplificado**
+
+```html
+<div>
+  <div class="b-menu-toggle b-mobile ativo" data-toggle="exemplo"> 
+    Abre Elemento
+  </div>      
+</div>
+<div data-element="exemplo"> 
+  Elemento
+</div>
+```
+
+Classes CSS Padrão:
+
+| Classes | Descrição |
+| ------ | ------ |
+| b-menu | Uma classe exclusiva para a criação de menus, aplicando display: none; no formato mobile, caso o menu esteja inativo |
+| b-mobile | Classe exclusiva dos botões, limitando a exibição somente ao mobile|
