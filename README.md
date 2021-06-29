@@ -1,6 +1,8 @@
 # basicv2
 Basic é um framework muito simples em Javascript e SCSS criado para facilitar a criação de front-end para websites. 
 
+O Basic é divido em módulos, e abaixo consta a documentação de como utilizar cada um deles...
+
 ## fixedOnScroll
 
 Este módulo fixa o elementos quando a rolagem atinge um deterninado valor.
