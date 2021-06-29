@@ -1,19 +1,26 @@
 export default class FixedOnScroll{  
-    constructor(){
+    constructor(height){
+        if (height){
+            this.defaultHeight = height;
+        } else {
+            this.defaultHeight = 400;
+        }
         this.elements = document.querySelectorAll('[data-fixed]');
+        this.activeClass = 'ativo';
     } 
 
     fixedElement(){
         this.elements.forEach(element => {   
             if(window.pageYOffset > 400){
-                if(!element.classList.contains('ativo')){
-                    element.classList.add('ativo');
+                if(!element.classList.contains(this.activeClass)){
+                    element.classList.add(this.activeClass);
                 }
             } else {
-                element.classList.remove('ativo');
+                element.classList.remove(this.activeClass);
             }
         })
     }
+    
     bindEvents(){
         this.fixedElement = this.fixedElement.bind(this);    
     }
