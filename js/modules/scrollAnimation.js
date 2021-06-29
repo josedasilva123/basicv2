@@ -1,6 +1,6 @@
 "use strict";
 export default class ScrollAnimation {
-  constructor(elements){
+  constructor(){
     this.elements = document.querySelectorAll('[data-sanimation]');
   }
   

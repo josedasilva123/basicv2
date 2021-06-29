@@ -9,8 +9,7 @@ export default class Modal{
         if (buttons.length > 1){
             buttons.forEach(button => button.classList.toggle(this.activeClass));  
         } 
-        element.classList.toggle(this.activeClass);  
-        console.log(buttons.length); 
+        element.classList.toggle(this.activeClass); 
     }
 
     toggleClick(event){
