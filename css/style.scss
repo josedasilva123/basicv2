@@ -1,0 +1,48 @@
+@use 'animation';
+@use 'toggle';
+@use 'reset';
+@use 'tabs';
+@use 'fixed';
+@use 'buttons';
+@use 'colapse';
+@use 'theme';
+@use 'modal';
+
+/* Container */
+
+$max-width: 1280px;
+$margin: 5%;
+
+.b-container{
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: .8rem;
+}
+.b-container-fluid{
+    width: 100%;
+}
+.b-container-margin{
+    margin-left: $margin;
+    margin-right: $margin;
+}
+.b-flex-row{
+    display: flex;
+}
+
+@media (min-width: 769px){
+    .b-mobile{
+        display: none;
+    }
+}
+
+[data-field-master]{
+    display: none;
+} 
+
+[data-field-master].ativo{
+    display: inherit;
+}
+
+ 
+
+

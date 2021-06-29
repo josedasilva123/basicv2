@@ -1,0 +1,42 @@
+[data-toggle]{
+    display: none;
+    &.ativo{
+        cursor: pointer;
+        display: inline;  
+    }
+}
+[data-element]{
+    display: none;
+    &.ativo{
+        display: inherit;
+    }
+}
+
+@media (max-width: 1020px){
+    [data-toggle] img{
+        width: 24px;
+        height: 24px;
+    }   
+    [data-element].b-menu,
+    [data-toggle]{
+        display: none;
+    }
+    [data-element].b-menu.ativo{
+        display: inherit;
+    }   
+    [data-toggle].ativo{
+        display: inline;
+        cursor: pointer;
+    } 
+}
+@media (min-width: 1021px){   
+    [data-element].b-menu{
+        display: block;
+    } 
+    [data-toggle].b-mobile{
+        display: none;
+        &.ativo{
+            display: none;
+        }
+    }
+}

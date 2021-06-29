@@ -1,0 +1,10 @@
+[data-fixed="top"].ativo{
+    position: fixed;
+    top: 0;
+    animation: fadeIn .4s forwards;
+}
+[data-fixed="bottom"].ativo{
+    position: fixed;
+    bottom: 0;
+    animation: fadeIn .4s forwards;
+}

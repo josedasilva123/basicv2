@@ -1,0 +1,28 @@
+$max-height: 500px;
+
+.colapse-label{
+    display: block;
+    cursor: pointer;
+}
+[data-colapse]{
+    cursor: pointer;
+    display: none;
+    & + .colapse-content{
+        display: none;
+    }
+        &:checked{
+            & + .colapse-content{
+                display: flex;
+                animation: expandDown .5s forwards;
+            }
+        }    
+}    
+@keyframes expandDown{
+    from{
+        opacity: 0;
+        max-height: 0;
+    } to {
+        opacity: 1;
+        max-height: $max-height;
+    }
+}   

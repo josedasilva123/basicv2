@@ -1,0 +1,9 @@
+[data-tab-item]{
+    cursor: pointer;
+}    
+[data-tab-content]{
+    display: none;
+}
+[data-tab-content].ativo{
+    display: inherit;
+}
