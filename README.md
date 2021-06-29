@@ -1,5 +1,5 @@
 # basicv2
-Basic é um framework muito simples em Javascript e SCSS criado para facilitar a criação de front-end para websites. Composto por diversos módulos, tem como objetivo faciltiar o processo de criação oferecendo funcionalidades para as rotinas recorrentes na criação de sites, tais como: menu responsivo, abas, sanfonas, modal e mais...
+Basic é um framework muito simples em Javascript e SCSS criado para facilitar a criação de front-end para websites. 
 
 ## fixedOnScroll
 
