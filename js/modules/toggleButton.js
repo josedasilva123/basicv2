@@ -1,6 +1,6 @@
 import outsideClick from './functions/outsideClick.js';
 
-export default class toggleButton{
+export default class ToggleButton{
     constructor(){ 
         this.buttons = document.querySelectorAll('[data-toggle]');        
         this.activeClass = 'ativo';

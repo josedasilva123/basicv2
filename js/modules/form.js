@@ -1,4 +1,4 @@
-export default class validateForm{
+export default class ValidateForm{
     constructor(form, submit){
         this.form = document.querySelector(form);
         this.fields = this.form.querySelectorAll(`[data-form="field"]`);
