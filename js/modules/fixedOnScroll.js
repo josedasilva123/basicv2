@@ -11,7 +11,7 @@ export default class FixedOnScroll{
 
     fixedElement(){
         this.elements.forEach(element => {   
-            if(window.pageYOffset > 400){
+            if(window.pageYOffset > this.defaultHeight){
                 if(!element.classList.contains(this.activeClass)){
                     element.classList.add(this.activeClass);
                 }
