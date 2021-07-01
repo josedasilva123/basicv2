@@ -211,15 +211,16 @@ Aplicação em HTML:
     </div> 
   </div>   
   <ul class="b-menu" data-element="exemplo" data-animation="fadeIn">
-  <li>
-    <a href="">Item 1</a>             
-  </li>
-  <li>
-    <a href="">Item 2</a>             
-  </li>
-  <li>
-    <a href="">Item 3</a>             
-  </li>
+    <li>
+      <a href="">Item 1</a>             
+    </li>
+    <li>
+      <a href="">Item 2</a>             
+    </li>
+    <li>
+      <a href="">Item 3</a>             
+    </li>
+  </ul>    
 </nav> 
 ```
 
