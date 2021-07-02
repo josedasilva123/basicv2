@@ -320,6 +320,7 @@ Atributos Especiais:
 | Atributo | Descrição |
 | ------ | ------ |
 | data-menu="landing"| Com esta opção de atributo, o menu mobile é fechado ao se clicarem nos links (excelente opção para landing page) |
+> O atributo "landing" precisa no módulo `toggleButton` para funcionar, tendo em vista que é através dele que são criados os menus mobile.
 
 **Exemplo: identificar página ativa + landing**
 
