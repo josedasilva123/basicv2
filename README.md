@@ -258,7 +258,7 @@ Classes CSS Padrão:
 
 | Classes | Descrição |
 | ------ | ------ |
-| b-menu | Uma classe exclusiva para a criação de menus, aplicando `display: none;` no formato mobile, caso o menu esteja inativo |
+| b-menu | Uma classe exclusiva para a criação de menus, aplicando `display: none` no formato mobile, caso o menu esteja inativo |
 | b-mobile | Classe exclusiva dos botões, limitando a exibição somente ao mobile|
 
 ## Menu
