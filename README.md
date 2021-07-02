@@ -3,9 +3,18 @@ Basic é uma base muito simples em Javascript e SCSS criada para facilitar a cri
 
 O Basic é divido em módulos, e abaixo consta a documentação de como utilizar cada um deles...
 
-[TOCM]
+##### Lista de Módulos
 
-[TOC]
+**Módulos JS**
+- [fixedOnScroll](#fixedonscroll)
+- [scrollAnimation](#scrollanimation)
+- [modal](#modal)
+- [tabs](#tabs)
+- [toggleButton](#togglebutton)
+- [menu](#menu)
+
+**Módulos CSS**
+- [colapse](#colapse)
 
 ## fixedOnScroll
 
@@ -265,7 +274,7 @@ Classes CSS Padrão:
 | b-menu | Uma classe exclusiva para a criação de menus, aplicando `display: none` no formato mobile, caso o menu esteja inativo |
 | b-mobile | Classe exclusiva dos botões, limitando a exibição somente ao mobile|
 
-## Menu
+## menu
 
 Este módulo adiciona comportamentos especiais ao menu, como identificar página ativa com base em `pathname` e outras especificidades para menu mobile.
 
@@ -356,7 +365,7 @@ Atributos Especiais:
 
 ***Além dos módulos em JS, o Basic tem disponível um conjunto de modulos CSS para funcionalidades mais simples, segue a lista e instruções de uso abaixo:***
 
-## Colapse
+## colapse
 
 CSS simples para criação de acordeons e sanfonas.
 
