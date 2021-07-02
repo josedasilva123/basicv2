@@ -395,7 +395,6 @@ CSS simples para criação de acordeons e sanfonas.
   Conteúdo 2
 </div>
 ```
-=============
+------------
 
-![](https://images.pexels.com/photos/1804035/pexels-photo-1804035.jpeg?cs=srgb&dl=pexels-sohel-patel-1804035.jpg&fm=jpg)
 **This is basic!**
