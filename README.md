@@ -164,8 +164,7 @@ Aplicação em HTML:
 
 ## toggleButton
 
-Este modulo auxiliar a criação de botões para exibirem ou fecharem outros elementos, neste modulo, diferente do Modal, qualquer clique fora do elemento vai fecha-lo. É útil para criação de menus mobile, dropdowns onClick, entre outros.
-
+Este modulo auxiliar a criação de botões para exibirem ou fecharem outros elementos. Ideal para menus mobiles, carrinhos, dropdowns ativos via click, entre outros...
 
 Iniciando (em index.js):
 ```js
