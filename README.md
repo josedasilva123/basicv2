@@ -122,7 +122,7 @@ Classes CSS Padrão:
 
 | Classes | Descrição |
 | ------ | ------ |
-| b-modal | Fixa o modal na tela, é grade invisível em que o modal fica. Usa por padrão position: fixed, width: 100%, height: 100% e z-index: 1001, com display: flex para posicionar o conteúdo interno |
+| b-modal | Fixa o modal na tela, é grade invisível em que o modal fica. Usa por padrão `position: fixed, width: 100%, height: 100% e z-index: 1001`, com `display: flex` para posicionar o conteúdo interno |
 | b-modal-overlay | É o overlay do modal, por padrão não tem cor, mas existe para, em caso de clique, o modal fechar |
 | b-modal-content | É a caixa do modal propriamente dita
 
@@ -154,7 +154,7 @@ Aplicação em HTML:
 
 **Autoplay**
 
-É possível aplicar autoplay nas abas, para fazer isso, basta aplicar data-autoplay no data-tab-menu
+É possível aplicar autoplay nas abas, para fazer isso, basta aplicar `data-autoplay` no **data-tab-menu**
 ```html
 <ul data-tab-menu="exemplo" data-autoplay>
   <li class="ativo">Aba 1</li>
@@ -240,7 +240,7 @@ Aplicação em HTML:
 Atributos Especiais:
 | Atributo | Descrição |
 | ------ | ------ |
-| data-outclick | Deve ser colocado no elemento (data-element). Faz com que o menu seja fechado caso o aconteça um click fora do elemento |
+| data-outclick | Deve ser colocado no elemento **data-element**. Faz com que o menu seja fechado caso o aconteça um click fora do elemento |
 
 **Exemplo:**
 
@@ -263,7 +263,7 @@ Classes CSS Padrão:
 
 ## Menu
 
-Este módulo adiciona comportamentos especiais ao menu, como identificar página ativa com base em pathname e outras especificidades para menu mobile.
+Este módulo adiciona comportamentos especiais ao menu, como identificar página ativa com base em `pathname` e outras especificidades para menu mobile.
 
 Iniciando (em index.js):
 ```js
