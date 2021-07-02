@@ -164,8 +164,7 @@ Aplicação em HTML:
 
 ## toggleButton
 
-Este modulo auxiliar a criação de botões para exibirem ou fecharem outros elementos, neste modulo, diferente do Modal, qualquer clique fora do elemento vai fecha-lo. É útil para criação de menus mobile, dropdowns onClick, entre outros.
-
+Este modulo auxiliar a criação de botões para exibirem ou fecharem outros elementos. Ideal para menus mobiles, carrinhos, dropdowns ativos via click, entre outros...
 
 Iniciando (em index.js):
 ```js
@@ -186,15 +185,16 @@ Aplicação em HTML:
     </div> 
   </div>   
   <ul class="b-menu" data-element="exemplo" data-animation="fadeIn">
-  <li>
-    <a href="">Item 1</a>             
-  </li>
-  <li>
-    <a href="">Item 2</a>             
-  </li>
-  <li>
-    <a href="">Item 3</a>             
-  </li>
+    <li>
+      <a href="">Item 1</a>             
+    </li>
+    <li>
+      <a href="">Item 2</a>             
+    </li>
+    <li>
+      <a href="">Item 3</a>             
+    </li>
+  </ul> 
 </nav> 
 ```
 
@@ -211,15 +211,16 @@ Aplicação em HTML:
     </div> 
   </div>   
   <ul class="b-menu" data-element="exemplo" data-animation="fadeIn">
-  <li>
-    <a href="">Item 1</a>             
-  </li>
-  <li>
-    <a href="">Item 2</a>             
-  </li>
-  <li>
-    <a href="">Item 3</a>             
-  </li>
+    <li>
+      <a href="">Item 1</a>             
+    </li>
+    <li>
+      <a href="">Item 2</a>             
+    </li>
+    <li>
+      <a href="">Item 3</a>             
+    </li>
+  </ul>    
 </nav> 
 ```
 
@@ -236,6 +237,23 @@ Aplicação em HTML:
 </div>
 ```
 
+Atributos Especiais:
+| Classes | Descrição |
+| ------ | ------ |
+| data-outclick | Deve ser colocado no elemento (data-element) Faz com que o menu seja fechado caso o aconteça um click fora do elemento |
+
+**Exemplo:**
+
+```html
+<div>
+  <div class="b-menu-toggle b-mobile ativo" data-toggle="exemplo"> 
+    Abre Elemento
+  </div>      
+</div>
+<div data-element="exemplo" data-outclick> 
+  Elemento
+</div>
+```
 Classes CSS Padrão:
 
 | Classes | Descrição |
