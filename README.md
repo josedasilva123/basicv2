@@ -164,7 +164,7 @@ Aplicação em HTML:
 
 ## toggleButton
 
-Este modulo auxiliar a criação de botões para exibirem ou fecharem outros elementos. Ideal para menus mobiles, carrinhos, dropdowns ativos via click, entre outros...
+Este módulo auxiliar a criação de botões para exibirem ou fecharem outros elementos. Ideal para menus mobiles, carrinhos, dropdowns ativos via click, entre outros...
 
 Iniciando (em index.js):
 ```js
@@ -238,9 +238,9 @@ Aplicação em HTML:
 ```
 
 Atributos Especiais:
-| Classes | Descrição |
+| Atributo | Descrição |
 | ------ | ------ |
-| data-outclick | Deve ser colocado no elemento (data-element) Faz com que o menu seja fechado caso o aconteça um click fora do elemento |
+| data-outclick | Deve ser colocado no elemento (data-element). Faz com que o menu seja fechado caso o aconteça um click fora do elemento |
 
 **Exemplo:**
 
@@ -260,5 +260,91 @@ Classes CSS Padrão:
 | ------ | ------ |
 | b-menu | Uma classe exclusiva para a criação de menus, aplicando display: none; no formato mobile, caso o menu esteja inativo |
 | b-mobile | Classe exclusiva dos botões, limitando a exibição somente ao mobile|
+
+## Menu
+
+Este módulo adiciona comportamentos especiais ao menu, como identificar página ativa com base em pathname e outras especificidades para menu mobile.
+
+Iniciando (em index.js):
+```js
+import Menu from './modules/menu.js';
+
+const menu = new Menu();
+menu.init();
+```
+**Comportamento básico: identificar página ativa**
+
+```html
+<nav>
+  <ul class="b-menu" data-menu>
+    <li>
+      <a href="/" data-menu-link>Item 1</a>             
+    </li>
+    <li>
+      <a href="/exemplo1" data-menu-link>Item 2</a>             
+    </li>
+    <li>
+      <a href="/exemplo2" data-menu-link>Item 3</a>             
+    </li>
+  </ul>    
+</nav> 
+```
+
+**Comportamento básico em menu mobile: identificar página ativa**
+
+```html
+<nav>
+  <div class="b-menu-toggle-box">
+    <div class="b-mobile ativo" data-toggle="exemplo"> 
+      Abre Menu
+    </div> 
+    <div class="b-mobile" data-toggle="exemplo"> 
+      Fecha Menu
+    </div> 
+  </div>   
+  <ul class="b-menu" data-element="exemplo" data-animation="fadeIn" data-menu>
+    <li>
+      <a href="/" data-menu-link>Item 1</a>             
+    </li>
+    <li>
+      <a href="/exemplo1" data-menu-link>Item 2</a>             
+    </li>
+    <li>
+      <a href="/exemplo2" data-menu-link>Item 3</a>             
+    </li>
+  </ul>    
+</nav> 
+```
+
+Atributos Especiais:
+| Atributo | Descrição |
+| ------ | ------ |
+| data-menu="landing"| Com esta opção de atributo, o menu mobile é fechado ao se clicarem nos links (excelente opção para landing page) |
+
+**Exemplo: identificar página ativa + landing**
+
+```html
+<nav>
+  <div class="b-menu-toggle-box">
+    <div class="b-mobile ativo" data-toggle="exemplo"> 
+      Abre Menu
+    </div> 
+    <div class="b-mobile" data-toggle="exemplo"> 
+      Fecha Menu
+    </div> 
+  </div>   
+  <ul class="b-menu" data-element="exemplo" data-animation="fadeIn" data-menu="exemplo">
+    <li>
+      <a href="/" data-menu-link>Item 1</a>             
+    </li>
+    <li>
+      <a href="/exemplo1" data-menu-link>Item 2</a>             
+    </li>
+    <li>
+      <a href="/exemplo2" data-menu-link>Item 3</a>             
+    </li>
+  </ul>    
+</nav> 
+```
 
 **This is basic!**
