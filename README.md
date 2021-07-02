@@ -3,6 +3,19 @@ Basic é uma base muito simples em Javascript e SCSS criada para facilitar a cri
 
 O Basic é divido em módulos, e abaixo consta a documentação de como utilizar cada um deles...
 
+##### Lista de Módulos
+
+**Módulos JS**
+- [fixedOnScroll](#fixedonscroll)
+- [scrollAnimation](#scrollanimation)
+- [modal](#modal)
+- [tabs](#tabs)
+- [toggleButton](#togglebutton)
+- [menu](#menu)
+
+**Módulos CSS**
+- [colapse](#colapse)
+
 ## fixedOnScroll
 
 Este módulo fixa o elementos quando a rolagem atinge um deterninado valor.
@@ -79,7 +92,7 @@ modal.init();
 ```
 Aplicação em HTML:
 
-**Modal básico**
+### **Modal básico**
 
 ```html
 <button data-modal="exemplo" data-openModal>Abre Modal</button>
@@ -91,7 +104,7 @@ Aplicação em HTML:
 </div>
 ```
 
-**Modal com botão alternando**
+### **Modal com botão alternando**
 
 ```html
 <button class="ativo" data-modal="exemplo" data-openModal>Abre Modal</button>
@@ -104,7 +117,7 @@ Aplicação em HTML:
 </div>
 ```
 
-**Modal com overlay**
+### **Modal com overlay**
 
 ```html
 <button class="ativo" data-modal="exemplo" data-openModal>Abre Modal</button>
@@ -122,7 +135,7 @@ Classes CSS Padrão:
 
 | Classes | Descrição |
 | ------ | ------ |
-| b-modal | Fixa o modal na tela, é grade invisível em que o modal fica. Usa por padrão position: fixed, width: 100%, height: 100% e z-index: 1001, com display: flex para posicionar o conteúdo interno |
+| b-modal | Fixa o modal na tela, é grade invisível em que o modal fica. Usa por padrão `position: fixed, width: 100%, height: 100% e z-index: 1001`, com `display: flex` para posicionar o conteúdo interno |
 | b-modal-overlay | É o overlay do modal, por padrão não tem cor, mas existe para, em caso de clique, o modal fechar |
 | b-modal-content | É a caixa do modal propriamente dita
 
@@ -154,7 +167,7 @@ Aplicação em HTML:
 
 **Autoplay**
 
-É possível aplicar autoplay nas abas, para fazer isso, basta aplicar data-autoplay no data-tab-menu
+É possível aplicar autoplay nas abas, para fazer isso, basta aplicar `data-autoplay` no **data-tab-menu**
 ```html
 <ul data-tab-menu="exemplo" data-autoplay>
   <li class="ativo">Aba 1</li>
@@ -175,7 +188,7 @@ toggle.init();
 ```
 Aplicação em HTML:
 
-**Menu Mobile Básico**
+### **Menu Mobile Básico**
 
 ```html
 <nav>
@@ -198,7 +211,7 @@ Aplicação em HTML:
 </nav> 
 ```
 
-**Menu Mobile com botão alternando**
+### **Menu Mobile com botão alternando**
 
 ```html
 <nav>
@@ -224,7 +237,7 @@ Aplicação em HTML:
 </nav> 
 ```
 
-**Uso simplificado**
+### **Uso simplificado**
 
 ```html
 <div>
@@ -240,9 +253,9 @@ Aplicação em HTML:
 Atributos Especiais:
 | Atributo | Descrição |
 | ------ | ------ |
-| data-outclick | Deve ser colocado no elemento (data-element). Faz com que o menu seja fechado caso o aconteça um click fora do elemento |
+| data-outclick | Deve ser colocado no elemento **data-element**. Faz com que o menu seja fechado caso o aconteça um click fora do elemento |
 
-**Exemplo:**
+### **Exemplo:**
 
 ```html
 <div>
@@ -258,12 +271,12 @@ Classes CSS Padrão:
 
 | Classes | Descrição |
 | ------ | ------ |
-| b-menu | Uma classe exclusiva para a criação de menus, aplicando display: none; no formato mobile, caso o menu esteja inativo |
+| b-menu | Uma classe exclusiva para a criação de menus, aplicando `display: none` no formato mobile, caso o menu esteja inativo |
 | b-mobile | Classe exclusiva dos botões, limitando a exibição somente ao mobile|
 
-## Menu
+## menu
 
-Este módulo adiciona comportamentos especiais ao menu, como identificar página ativa com base em pathname e outras especificidades para menu mobile.
+Este módulo adiciona comportamentos especiais ao menu, como identificar página ativa com base em `pathname` e outras especificidades para menu mobile.
 
 Iniciando (em index.js):
 ```js
@@ -272,7 +285,7 @@ import Menu from './modules/menu.js';
 const menu = new Menu();
 menu.init();
 ```
-**Comportamento básico: identificar página ativa**
+### **Comportamento básico: identificar página ativa**
 
 ```html
 <nav>
@@ -290,7 +303,7 @@ menu.init();
 </nav> 
 ```
 
-**Comportamento básico em menu mobile: identificar página ativa**
+### **Comportamento básico em menu mobile: identificar página ativa**
 
 ```html
 <nav>
@@ -320,8 +333,9 @@ Atributos Especiais:
 | Atributo | Descrição |
 | ------ | ------ |
 | data-menu="landing"| Com esta opção de atributo, o menu mobile é fechado ao se clicarem nos links (excelente opção para landing page) |
+> O atributo "landing" precisa no módulo `toggleButton` para funcionar, tendo em vista que é através dele que são criados os menus mobile.
 
-**Exemplo: identificar página ativa + landing**
+### **Exemplo: identificar página ativa + landing**
 
 ```html
 <nav>
@@ -346,5 +360,41 @@ Atributos Especiais:
   </ul>    
 </nav> 
 ```
+
+
+
+***Além dos módulos em JS, o Basic tem disponível um conjunto de modulos CSS para funcionalidades mais simples, segue a lista e instruções de uso abaixo:***
+
+## colapse
+
+CSS simples para criação de acordeons e sanfonas.
+
+**Exemplos**
+
+```html
+<label for="exemplo1" class="colapse-label">Item 1</label>
+<input type="checkbox" name="exemplo" id="exemplo1" data-colapse>
+<div class="colapse-content">
+  Conteúdo 1
+</div>
+<label for="exemplo2" class="colapse-label">Item 2</label>
+<input type="checkbox" name="exemplo" id="exemplo2" data-colapse>
+<div class="colapse-content">
+  Conteúdo 2
+</div>
+```
+```html
+<label for="exemplo1" class="colapse-label">Item 1</label>
+<input type="radio" name="exemplo" id="exemplo1" data-colapse>
+<div class="colapse-content">
+  Conteúdo 1
+</div>
+<label for="exemplo2" class="colapse-label">Item 2</label>
+<input type="radio" name="exemplo" id="exemplo2" data-colapse>
+<div class="colapse-content">
+  Conteúdo 2
+</div>
+```
+------------
 
 **This is basic!**
