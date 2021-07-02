@@ -4,9 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>This is Basic</title>
-    <link rel="stylesheet" href="css/style.css" />  
+    <link rel="stylesheet" href="css/style.css" />
+  <style>
+  [data-menu-link].atual{
+    color: red;
+  }  
+  </style>  
   <body>   
     <h1>This is Basic</h1> 
+    <nav data-fixed="top">
+      <ul data-menu>
+        <li>
+          <a data-menu-link href="#teste1">Teste 1</a>
+        </li>
+        <li>
+          <a data-menu-link href="#teste2">Teste 2</a>
+        </li>
+        <li>
+          <a data-menu-link href="#teste3">Teste 3</a>
+        </li>
+      </ul>
+    </nav>
+    <div data-section id="teste1" style="height: 100vh" data-sanimation="fadeIn">Teste</div>
+    <div data-section id="teste2" style="height: 100vh" data-sanimation="fadeIn">Teste2</div>
+    <div data-section id="teste3" style="height: 100vh" data-sanimation="fadeIn">Teste3</div>
 
     <script type="module" src="dist/basic.js"></script>     
   </body>

@@ -26,6 +26,7 @@ export default class ScrollAnimation {
   }
 
   init(){
+    this.bindEvents();
     this.addEvent();
     this.playAnimation();
   }   
