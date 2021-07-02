@@ -3,6 +3,10 @@ Basic é uma base muito simples em Javascript e SCSS criada para facilitar a cri
 
 O Basic é divido em módulos, e abaixo consta a documentação de como utilizar cada um deles...
 
+[TOCM]
+
+[TOC]
+
 ## fixedOnScroll
 
 Este módulo fixa o elementos quando a rolagem atinge um deterninado valor.
@@ -79,7 +83,7 @@ modal.init();
 ```
 Aplicação em HTML:
 
-**Modal básico**
+### **Modal básico**
 
 ```html
 <button data-modal="exemplo" data-openModal>Abre Modal</button>
@@ -91,7 +95,7 @@ Aplicação em HTML:
 </div>
 ```
 
-**Modal com botão alternando**
+### **Modal com botão alternando**
 
 ```html
 <button class="ativo" data-modal="exemplo" data-openModal>Abre Modal</button>
@@ -104,7 +108,7 @@ Aplicação em HTML:
 </div>
 ```
 
-**Modal com overlay**
+### **Modal com overlay**
 
 ```html
 <button class="ativo" data-modal="exemplo" data-openModal>Abre Modal</button>
@@ -175,7 +179,7 @@ toggle.init();
 ```
 Aplicação em HTML:
 
-**Menu Mobile Básico**
+### **Menu Mobile Básico**
 
 ```html
 <nav>
@@ -198,7 +202,7 @@ Aplicação em HTML:
 </nav> 
 ```
 
-**Menu Mobile com botão alternando**
+### **Menu Mobile com botão alternando**
 
 ```html
 <nav>
@@ -224,7 +228,7 @@ Aplicação em HTML:
 </nav> 
 ```
 
-**Uso simplificado**
+### **Uso simplificado**
 
 ```html
 <div>
@@ -242,7 +246,7 @@ Atributos Especiais:
 | ------ | ------ |
 | data-outclick | Deve ser colocado no elemento **data-element**. Faz com que o menu seja fechado caso o aconteça um click fora do elemento |
 
-**Exemplo:**
+### **Exemplo:**
 
 ```html
 <div>
@@ -272,7 +276,7 @@ import Menu from './modules/menu.js';
 const menu = new Menu();
 menu.init();
 ```
-**Comportamento básico: identificar página ativa**
+### **Comportamento básico: identificar página ativa**
 
 ```html
 <nav>
@@ -290,7 +294,7 @@ menu.init();
 </nav> 
 ```
 
-**Comportamento básico em menu mobile: identificar página ativa**
+### **Comportamento básico em menu mobile: identificar página ativa**
 
 ```html
 <nav>
@@ -322,7 +326,7 @@ Atributos Especiais:
 | data-menu="landing"| Com esta opção de atributo, o menu mobile é fechado ao se clicarem nos links (excelente opção para landing page) |
 > O atributo "landing" precisa no módulo `toggleButton` para funcionar, tendo em vista que é através dele que são criados os menus mobile.
 
-**Exemplo: identificar página ativa + landing**
+### **Exemplo: identificar página ativa + landing**
 
 ```html
 <nav>
