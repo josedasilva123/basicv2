@@ -238,6 +238,23 @@ Aplicação em HTML:
 </div>
 ```
 
+Atributos Especiais:
+| Classes | Descrição |
+| ------ | ------ |
+| data-outclick | Deve ser colocado no elemento (data-element) Faz com que o menu seja fechado caso o aconteça um click fora do elemento |
+
+**Exemplo:**
+
+```html
+<div>
+  <div class="b-menu-toggle b-mobile ativo" data-toggle="exemplo"> 
+    Abre Elemento
+  </div>      
+</div>
+<div data-element="exemplo" data-outclick> 
+  Elemento
+</div>
+```
 Classes CSS Padrão:
 
 | Classes | Descrição |
