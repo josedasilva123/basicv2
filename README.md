@@ -348,4 +348,39 @@ Atributos Especiais:
 </nav> 
 ```
 
+
+
+***Além dos módulos em JS, o Basic tem disponível um conjunto de modulos CSS para funcionalidades mais simples, segue a lista e instruções de uso abaixo:***
+
+## Colapse
+
+CSS simples para criação de acordeons e sanfonas.
+
+**Exemplos**
+
+```html
+<label for="exemplo1" class="colapse-label">Item 1</label>
+<input type="checkbox" name="exemplo" id="exemplo1" data-colapse>
+<div class="colapse-content">
+  Conteúdo 1
+</div>
+<label for="exemplo2" class="colapse-label">Item 2</label>
+<input type="checkbox" name="exemplo" id="exemplo2" data-colapse>
+<div class="colapse-content">
+  Conteúdo 2
+</div>
+```
+```html
+<label for="exemplo1" class="colapse-label">Item 1</label>
+<input type="radio" name="exemplo" id="exemplo1" data-colapse>
+<div class="colapse-content">
+  Conteúdo 1
+</div>
+<label for="exemplo2" class="colapse-label">Item 2</label>
+<input type="radio" name="exemplo" id="exemplo2" data-colapse>
+<div class="colapse-content">
+  Conteúdo 2
+</div>
+```
+
 **This is basic!**
