@@ -89,9 +89,7 @@ export default class ValidateForm{
                         submit.classList.add(this.loadingClass);
                     }
                     const response = await fetch(url, options); 
-                    const json = await response.json();
-                    console.log(response);
-                    console.log(json);
+                    const json = await response.json();                    
                 } catch {
         
                 } finally {
@@ -101,8 +99,6 @@ export default class ValidateForm{
         } else {
             console.log('Existem erros');     
         }
-        
-        console.log(errors);   
     }
 
     bindEvents(){
