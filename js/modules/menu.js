@@ -17,17 +17,6 @@ export default class Menu{
             })
         }) 
     }
-   
-    addEvents(){
-        if(this.menus){
-            this.menus.forEach(menu => {
-                if (menu.hasAttribute('data-menu-landing')){
-                    const items = menu.querySelectorAll('[data-menu-link]');
-                    items.forEach(item => item.addEventListener('click', () => this.closeMobileMenu(menu)));
-                }            
-            })
-        }
-    }
 
     init(){
         this.activeCurrentItem();
