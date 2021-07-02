@@ -7,6 +7,33 @@
     <link rel="stylesheet" href="css/style.css" />  
   <body>   
     <h1>This is Basic</h1> 
-    <script type="module" src="dist/basic.js"></script>   
+    <script type="module" src="dist/basic.js"></script>  
+    <nav>
+      <div class="b-menu-toggle-box">
+        <div class="b-mobile ativo" data-toggle="exemplo"> 
+          <button>Abre Menu</button>
+        </div> 
+        <div class="b-mobile" data-toggle="exemplo"> 
+          <button>Fecha Menu</button>
+        </div> 
+      </div>   
+      <ul class="b-menu" data-element="exemplo" data-animation="fadeIn" data-menu="landing" data-outclick>
+      <li>
+        <a href="/" data-menu-link>Home</a>             
+      </li>
+      <li>
+        <a href="#teste1" data-menu-link>Teste</a>          
+      </li>
+      <li>
+        <a href="#teste2" data-menu-link>Teste 2</a>          
+      </li>
+    </nav> 
+    <div id="teste1" style="height: 500px">
+      DIV 1
+    </div> 
+    <div id="teste2" style="height: 500px">
+      DIV 2
+    </div> 
+
   </body>
 </html>

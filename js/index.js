@@ -4,6 +4,7 @@ import ToggleButton from './modules/toggleButton.js';
 import Modal from './modules/modal.js';
 import ScrollAnimation from './modules/scrollAnimation.js';
 import ValidateForm from './modules/form.js';
+import Menu from './modules/menu.js';
 
 const tabs = new Tabs();
 tabs.init();
@@ -19,3 +20,6 @@ modal.init();
 
 const scrollAnimation = new ScrollAnimation();
 scrollAnimation.init();
+
+const menu = new Menu();
+menu.init();

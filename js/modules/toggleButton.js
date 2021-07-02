@@ -19,14 +19,14 @@ export default class ToggleButton{
         const element = document.querySelector(`[data-element="${dataset}"]`);
         const buttons = document.querySelectorAll(`[data-toggle="${dataset}"]`); 
         
-        outsideClick(element, this.activeClass, () => {
-            this.toggleElement(element, buttons);
-            buttons.forEach(button => button.addEventListener('click', this.toggleClick));
-        })
-        
-        
+        if(element.hasAttribute('data-outclick')){
+            outsideClick(element, this.activeClass, () => {
+                this.toggleElement(element, buttons);
+                buttons.forEach(button => button.addEventListener('click', this.toggleClick));
+            })
+            buttons.forEach(button => button.removeEventListener('click', this.toggleClick));
+        }
         this.toggleElement(element, buttons);
-        buttons.forEach(button => button.removeEventListener('click', this.toggleClick));
     }
 
     bindEvents(){
