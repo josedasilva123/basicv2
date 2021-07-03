@@ -26,7 +26,9 @@ export default class FixedOnScroll{
     }
 
     addEvent(){
-        window.addEventListener('scroll', this.fixedElement);      
+        if(this.elements){
+            window.addEventListener('scroll', this.fixedElement);  
+        }   
     } 
 
     init(){

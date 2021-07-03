@@ -22,7 +22,12 @@
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
-    "webpack": "^5.24.4",
+    "css-loader": "^5.2.6",
+    "mini-css-extract-plugin": "^2.0.0",
+    "sass": "^1.35.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.0.0",
+    "webpack": "^5.42.0",
     "webpack-cli": "^4.5.0"
   },
   "dependencies": {

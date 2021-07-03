@@ -1,33 +1,34 @@
 "use strict";
 export default class ScrollAnimation {
-  constructor(){
-    this.elements = document.querySelectorAll('[data-sanimation]');
-  }
-  
-  playAnimation() {
-    if(this.elements){
-      const scrollHeight = window.pageYOffset;
-      this.elements.forEach((element) => {
-        const sectionHeight = element.offsetTop;
-        const scrollRequired = sectionHeight - window.innerHeight * 0.7;
-        if (scrollHeight >= scrollRequired) {
-          element.classList.add("ativo");
-        }
-      });
-    }
+  constructor() {
+    this.elements = document.querySelectorAll("[data-sanimation]");
+    this.activeClass = "ativo";
   }
 
-  bindEvents(){
+  playAnimation() {
+    const scrollHeight = window.pageYOffset;
+    this.elements.forEach((element) => {
+      const sectionHeight = element.offsetTop;
+      const scrollRequired = sectionHeight - window.innerHeight * 0.7;
+      if (scrollHeight >= scrollRequired) {
+        element.classList.add(this.activeClass);
+      }
+    });
+  }
+
+  bindEvents() {
     this.playAnimation = this.playAnimation.bind(this);
   }
 
-  addEvent(){
-    window.addEventListener("scroll", this.playAnimation);
+  addEvent() {
+    if (this.sections) {
+      window.addEventListener("scroll", this.playAnimation);
+    }
   }
 
-  init(){
+  init() {
     this.bindEvents();
     this.addEvent();
     this.playAnimation();
-  }   
+  }
 }
