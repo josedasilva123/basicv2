@@ -1,4 +1,3 @@
-"use strict";
 export default class Tabs {
   constructor() {
     this.elements = document.querySelectorAll("[data-tab-menu]");
