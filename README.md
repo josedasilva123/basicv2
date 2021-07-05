@@ -23,7 +23,9 @@ Você pode ativar o Basic em seu projeto via CDN (com todos os módulos ativos)
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.css" />
 ```
 **Body (Final)**
-
+```html
+<script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.js"></script>
+```
 ## fixedOnScroll
 
 Este módulo fixa o elementos quando a rolagem atinge um deterninado valor.
