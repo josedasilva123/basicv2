@@ -20,7 +20,7 @@ export default class ScrollAnimation {
   }
 
   addEvent() {
-    if (this.sections) {
+    if (this.elements) {
       window.addEventListener("scroll", this.playAnimation);
     }
   }
