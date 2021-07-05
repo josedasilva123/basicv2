@@ -16,6 +16,14 @@ O Basic é divido em módulos, e abaixo consta a documentação de como utilizar
 **Módulos CSS**
 - [colapse](#colapse)
 
+Você pode ativar o Basic em seu projeto via CDN (com todos os módulos ativos)
+
+**Head**
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.css" />
+```
+**Body (Final)**
+
 ## fixedOnScroll
 
 Este módulo fixa o elementos quando a rolagem atinge um deterninado valor.
