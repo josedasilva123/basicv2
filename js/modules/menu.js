@@ -21,8 +21,8 @@ export default class Menu {
     const scrollHeight = window.pageYOffset;
     this.sections.forEach((section) => {
       const sectionBegin = section.offsetTop;
-      const sectionEnds = sectionBegin + section.offsetHeight;
-      if (scrollHeight >= sectionBegin && scrollHeight < sectionEnds) {
+      const sectionEnds = (sectionBegin + section.offsetHeight);
+      if ((scrollHeight >= sectionBegin || section.getAttribute('data-section') == "first") && scrollHeight < sectionEnds) {
         this.menus.forEach((menu) => {
           const items = menu.querySelectorAll("[data-menu-link]");
           items.forEach((item) => {
@@ -54,8 +54,9 @@ export default class Menu {
     }
   }
 
-  init() {
+  init() {    
     this.activeCurrentItem();
+    this.activeCurrentSection();
     this.bindEvents();
     this.addEvents();
   }
