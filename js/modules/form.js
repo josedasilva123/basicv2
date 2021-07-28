@@ -70,15 +70,15 @@ export default class ValidateForm {
     this.checkField(currentTarget);
   }
 
-  async fetchSubmit(event) {
-    event.preventDefault();
+  async fetchSubmit(event) {    
     const errors = Array.from(this.fields).map((field) => {
       const check = this.checkField(field);
       return check;
-    });
-
+    }); 
+    
     if (errors.every((element) => element == false)) {
       if (this.submit) {
+        event.preventDefault();
         const { url, options } = this.submit;
         const submit = event.currentTarget.querySelector(`[type="submit"]`);
         const html = submit.innerHTML;
@@ -89,12 +89,14 @@ export default class ValidateForm {
           }
           const response = await fetch(url, options);
           const json = await response.json();
-        } catch {
+        } catch (e) {
+          throw new Error(`Não foi possível realizara a requisição. Erro: ${e.name}: ${e.message}`);
         } finally {
           submit.innerHTML = html;
         }
       }
     } else {
+      event.preventDefault();
       console.log("Existem erros");
     }
   }
