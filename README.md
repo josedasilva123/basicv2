@@ -133,12 +133,11 @@ Aplicação em HTML:
 <button class="ativo" data-modal="exemplo" data-openModal>Abre Modal</button>
 <button data-modal="exemplo" data-openModal>Fecha Modal</button>
 <div data-element="exemplo" class="b-modal">
-  <div class="b-modal-overlay">
-    <div class="b-modal-content">
-      <button data-modal="exemplo" data-closeModal>Fechar</button>
-      Modal 
-    </div>
-  </div>      
+  <div class="b-modal-overlay"></div> 
+  <div class="b-modal-content">
+    <button data-modal="exemplo" data-closeModal>Fechar</button>
+    Modal 
+  </div>       
 </div>
 ```
 Classes CSS Padrão:
