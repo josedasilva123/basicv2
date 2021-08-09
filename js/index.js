@@ -3,8 +3,8 @@ import FixedOnScroll from './modules/fixedOnScroll.js';
 import ToggleButton from './modules/toggleButton.js';
 import Modal from './modules/modal.js';
 import ScrollAnimation from './modules/scrollAnimation.js';
-import ValidateForm from './modules/form.js';
 import Menu from './modules/menu.js';
+
 import '../css/basic.scss';
 
 const tabs = new Tabs();
@@ -24,3 +24,4 @@ scrollAnimation.init();
 
 const menu = new Menu();
 menu.init();
+

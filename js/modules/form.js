@@ -1,4 +1,4 @@
-export default class ValidateForm {
+class ValidateForm {
   constructor(form, submit) {
     this.form = document.querySelector(form);
     this.fields = this.form.querySelectorAll(`[data-form="field"]`);
@@ -9,7 +9,84 @@ export default class ValidateForm {
         error: "Digite um endereço de e-mail válido.",
       },
     };
-    this.masks = {};
+    this.masks = {
+      cpf: {
+        expressions: [
+          {
+            regex: /\D/g,
+            replace: "",
+          },
+          {
+            regex: /(\d{3})(\d)/,
+            replace: "$1.$2",
+          },
+          {
+            regex: /(\d{3})(\d)/,
+            replace: "$1.$2",
+          },
+          {
+            regex: /(\d{3})(\d{1,2})$/,
+            replace: "$1-$2",
+          },
+        ],
+        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,
+      },
+      cnpj: {
+        expressions: [
+          {
+            regex: /\D/g,
+            replace: "",
+          },
+          {
+            regex: /^(\d{2})(\d)/,
+            replace: "$1.$2",
+          },
+          {
+            regex: /^(\d{2})\.(\d{3})(\d)/,
+            replace: "$1.$2.$3",
+          },
+          {
+            regex: /\.(\d{3})(\d)/,
+            replace: "$1/$2",
+          },
+          {
+            regex: /(\d{4})(\d)/,
+            replace: "$1-$2",
+          },
+        ],
+        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,
+      },
+      telefone: {
+        expressions: [
+          {
+            regex: /\D/g,
+            replace: "",           
+          },
+          {
+            regex: /^(\d{2})(\d)/g,
+            replace: "($1) $2",           
+          },
+          {
+            regex: /(\d)(\d{4})$/,
+            replace: "$1-$2",     
+          }
+        ], 
+        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,       
+      },
+      inteiros: {
+        expressions: [
+          {
+            regex: /\D/g,
+            replace: "",           
+          },
+          {
+            regex: /(\d)$/,
+            replace: "$1",           
+          },          
+        ], 
+        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,       
+      }
+    };
     this.submit = submit;
     this.activeClass = "ativo";
     this.loadingClass = "load";
@@ -52,7 +129,7 @@ export default class ValidateForm {
     let check = {};
     if (field.value === "" && field.hasAttribute("required")) {
       check.status = true;
-      check.text = "Preencha um valor no campo.";
+      check.text = "Preencha um valor no campo.";      
     } else if (field.hasAttribute("data-regex")) {
       const validation = this.validate(field);
       check.status = validation.errorStatus;
@@ -62,12 +139,11 @@ export default class ValidateForm {
       check.text = "";
     }
     this.toggleError(check, field);
-
     return check.status;
   }
 
-  fieldChange({ currentTarget }) {
-    this.checkField(currentTarget);
+  fieldChange({currentTarget}) {
+    this.checkField(currentTarget);  
   }
 
   async fetchSubmit(event) {    
@@ -101,15 +177,27 @@ export default class ValidateForm {
     }
   }
 
+  maskField({currentTarget}){
+    const mask = this.masks[currentTarget.dataset.mask];
+    const noMaskValue = currentTarget.value.replace(mask.clear, "");
+    mask.expressions.forEach(expression => { 
+      currentTarget.value  = currentTarget.value.replace(expression.regex, expression.replace);
+    })  
+  }
+
   bindEvents() {
     this.fieldChange = this.fieldChange.bind(this);
     this.fetchSubmit = this.fetchSubmit.bind(this);
+    this.maskField = this.maskField.bind(this);
   }
 
   addEvents() {
     this.fields.forEach((field) => {
       field.addEventListener("change", this.fieldChange);
       field.addEventListener("blur", this.fieldChange);
+      if(field.hasAttribute('data-mask')){        
+          field.addEventListener('keyup', this.maskField);        
+      }
     });
 
     this.form.addEventListener("submit", this.fetchSubmit);
@@ -119,4 +207,8 @@ export default class ValidateForm {
     this.bindEvents();
     this.addEvents();
   }
+}
+function basicForm(selector, submit){
+  const form = new ValidateForm(selector, submit);
+  form.init();
 }

@@ -28,7 +28,19 @@
     <div data-section="first" id="teste1" style="height: 100vh" data-sanimation="fadeIn">Teste</div>
     <div data-section id="teste2" style="height: 100vh" data-sanimation="fadeIn">Teste2</div>
     <div data-section id="teste3" style="height: 100vh" data-sanimation="fadeIn">Teste3</div>
+    <form action="" data-form="form">
+      <input type="text" id="cnpj" data-form="field" data-mask="cpf" maxlength="14" required>
+      <p class="error"></p>
+      <input type="text" id="telefone" data-form="field" data-mask="telefone" maxlength="15" required>
+      <p class="error"></p>
+    </form>  
 
-    <script type="module" src="public/basic.js"></script>     
+    <script type="module" src="public/basic.js"></script>   
+    <script src="js/modules/form.js"></script>
+    <script>
+      (() => {
+        basicForm('[data-form="form"]');
+      })();      
+    </script>
   </body>
 </html>
