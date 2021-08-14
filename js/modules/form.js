@@ -1,5 +1,5 @@
 class ValidateForm {
-  constructor(form, submit) {
+  constructor(form, submit, validations, masks) {
     this.form = document.querySelector(form);
     this.fields = this.form.querySelectorAll(`[data-form="field"]`);
     this.types = {
@@ -8,6 +8,7 @@ class ValidateForm {
           /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
         error: "Digite um endereço de e-mail válido.",
       },
+      ...validations,
     };
     this.masks = {
       cpf: {
@@ -85,7 +86,8 @@ class ValidateForm {
           },          
         ], 
         clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,       
-      }
+      },
+      ...masks,
     };
     this.submit = submit;
     this.activeClass = "ativo";
@@ -129,7 +131,11 @@ class ValidateForm {
     let check = {};
     if (field.value === "" && field.hasAttribute("required")) {
       check.status = true;
-      check.text = "Preencha um valor no campo.";      
+      if(field.tagName == "SELECT"){
+        check.text = "Selecione uma opção no campo."; 
+      } else {
+        check.text = "Preencha um valor no campo.";   
+      }           
     } else if (field.hasAttribute("data-regex")) {
       const validation = this.validate(field);
       check.status = validation.errorStatus;
@@ -173,7 +179,6 @@ class ValidateForm {
       }
     } else {
       event.preventDefault();
-      console.log("Existem erros");
     }
   }
 
@@ -208,7 +213,8 @@ class ValidateForm {
     this.addEvents();
   }
 }
-function basicForm(selector, submit){
-  const form = new ValidateForm(selector, submit);
+
+function basicForm(selector, submit, validations, masks){
+  const form = new ValidateForm(selector, submit, validations, masks);
   form.init();
 }
