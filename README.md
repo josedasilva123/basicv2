@@ -174,6 +174,25 @@ Aplicação em HTML:
 ```
 **Obs:** Vale dizer que a posição do menu não importa (Em cima, embaixo ou intercalado por outro elemento)
 
+**Next and Prev**
+
+É possível utilizar navegação de próximo e anterior.
+
+```html
+<div>
+  <div data-tab-content="exemplo" class="ativo">Aba 1</div>
+  <div data-tab-content="exemplo">Aba 2</div>
+</div>
+<ul data-tab-menu="exemplo">
+  <li class="ativo">Aba 1</li>
+  <li>Aba 2</li>
+</ul>
+<button data-tab-prev="exemplo">Anterior</button>
+<button data-tab-next="exemplo">Próximo</button>
+```
+
+**Obs:** Os botões podem estar em qualquer lugar do documento (assim como o menu), além disso é possível haver mais de um botão.
+
 **Autoplay**
 
 É possível aplicar autoplay nas abas, para fazer isso, basta aplicar `data-autoplay` no **data-tab-menu**
