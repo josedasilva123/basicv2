@@ -70,43 +70,32 @@ export default class Tabs {
       });
     });
     menu.setAttribute('data-index', 0);
+
+    if (menu.hasAttribute("data-autoplay")) {  
+      this.autoPlay(items, content, menu, previous, next);
+    }
   }
 
-  autoPlay(menu) {
-    const items = menu.querySelectorAll("li");
-    const content = document.querySelectorAll(
-      `[data-tab-content="${menu.dataset.tabMenu}"`
-    );
+  autoPlay(items, content, menu, previous, next) { 
+    const elements = [...items, ...previous, ...next];      
+    const  autoplay = setInterval(() => {        
+      this.nextItem(menu, content, items);
+    }, 6000);   
 
-    let autoplay;
-
-    if (menu.hasAttribute("data-autoplay")) {
-      let counter = 0;
-      autoplay = setInterval(() => {
-        if (counter < items.length - 1) {
-          counter++;
-        } else {
-          counter = 0;
-        }
-        this.selectItem(content, items, counter);
-      }, 6000);
-    }
-
-    function clearAutoplay() {
+    const clearAutoplay = () => {
       if (autoplay) {
         clearInterval(autoplay);
       }
     }
 
-    items.forEach((item) => {
-      item.addEventListener("click", clearAutoplay);
+    elements.forEach((element) => {
+      element.addEventListener("click", clearAutoplay);
     });
   }
 
   init() {
     this.elements.forEach((menu) => {
-      this.tabScript(menu);
-      this.autoPlay(menu);
+      this.tabScript(menu);      
     });
   }
 }
