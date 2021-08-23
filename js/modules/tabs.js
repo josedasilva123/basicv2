@@ -69,6 +69,7 @@ export default class Tabs {
         this.selectItem(menu, items, content, index);
       });
     });
+    
     menu.setAttribute('data-index', 0);
 
     if (menu.hasAttribute("data-autoplay")) {  

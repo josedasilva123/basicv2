@@ -2,6 +2,7 @@ class ValidateForm {
   constructor(form, submit, validations, masks) {
     this.form = document.querySelector(form);
     this.fields = this.form.querySelectorAll(`[data-form="field"]`);
+    this.checkboxes = this.form.querySelectorAll(`[data-form="checkbox"]`);
     this.types = {
       email: {
         regex:
@@ -61,31 +62,31 @@ class ValidateForm {
         expressions: [
           {
             regex: /\D/g,
-            replace: "",           
+            replace: "",
           },
           {
             regex: /^(\d{2})(\d)/g,
-            replace: "($1) $2",           
+            replace: "($1) $2",
           },
           {
             regex: /(\d)(\d{4})$/,
-            replace: "$1-$2",     
-          }
-        ], 
-        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,       
+            replace: "$1-$2",
+          },
+        ],
+        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,
       },
       inteiros: {
         expressions: [
           {
             regex: /\D/g,
-            replace: "",           
+            replace: "",
           },
           {
             regex: /(\d)$/,
-            replace: "$1",           
-          },          
-        ], 
-        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,       
+            replace: "$1",
+          },
+        ],
+        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,
       },
       ...masks,
     };
@@ -113,7 +114,7 @@ class ValidateForm {
 
   toggleError(check, field) {
     const identifier = field.getAttribute("id");
-    const error = document.querySelector(`#${identifier} + .error`);
+    const error = document.querySelector(`#${identifier} ~ .error`);
 
     if (check.status === true) {
       if (!error.classList.contains(this.activeClass)) {
@@ -131,11 +132,11 @@ class ValidateForm {
     let check = {};
     if (field.value === "" && field.hasAttribute("required")) {
       check.status = true;
-      if(field.tagName == "SELECT"){
-        check.text = "Selecione uma opção no campo."; 
+      if (field.tagName == "SELECT") {
+        check.text = "Selecione uma opção no campo.";
       } else {
-        check.text = "Preencha um valor no campo.";   
-      }           
+        check.text = "Preencha um valor no campo.";
+      }
     } else if (field.hasAttribute("data-regex")) {
       const validation = this.validate(field);
       check.status = validation.errorStatus;
@@ -148,17 +149,51 @@ class ValidateForm {
     return check.status;
   }
 
-  fieldChange({currentTarget}) {
-    this.checkField(currentTarget);  
+  checkGroup() {
+    const groups = this.form.querySelectorAll('[data-form="group"]');
+    if(groups){
+      groups.forEach(group => {
+        const inputs = group.querySelectorAll('input');
+        console.log(inputs);
+      })
+    }
+  }
+  checkCheckbox(checkbox) {
+    let check = {};
+
+    if (!checkbox.checked && checkbox.hasAttribute("required")) {
+      check.status = true;
+      check.text = "Marcar esta caixa é obrigatório.";
+    } else {
+      check.status = false;
+      check.text = "";
+    }
+    this.toggleError(check, checkbox);
+    return check.status;
   }
 
-  async fetchSubmit(event) {    
-    const errors = Array.from(this.fields).map((field) => {
+  checkboxChange({currentTarget}){
+    this.checkCheckbox(currentTarget);
+  }
+
+  fieldChange({ currentTarget }) {
+    this.checkField(currentTarget);
+  }
+
+  async fetchSubmit(event) {
+    const fieldErrors = Array.from(this.fields).map((field) => {
       const check = this.checkField(field);
       return check;
-    }); 
-    
-    if (errors.every((element) => element == false)) {
+    });
+    const checkboxErrors = Array.from(this.checkboxes).map((checkbox) => {
+      const check = this.checkCheckbox(checkbox);
+      return check;
+    });
+
+    this.checkGroup();
+    console.log(checkboxErrors);
+
+    if (fieldErrors.every((element) => element == false)) {
       if (this.submit) {
         event.preventDefault();
         const { url, options } = this.submit;
@@ -172,7 +207,9 @@ class ValidateForm {
           const response = await fetch(url, options);
           const json = await response.json();
         } catch (e) {
-          throw new Error(`Não foi possível realizara a requisição. Erro: ${e.name}: ${e.message}`);
+          throw new Error(
+            `Não foi possível realizara a requisição. Erro: ${e.name}: ${e.message}`
+          );
         } finally {
           submit.innerHTML = html;
         }
@@ -182,15 +219,19 @@ class ValidateForm {
     }
   }
 
-  maskField({currentTarget}){
+  maskField({ currentTarget }) {
     const mask = this.masks[currentTarget.dataset.mask];
     const noMaskValue = currentTarget.value.replace(mask.clear, "");
-    mask.expressions.forEach(expression => { 
-      currentTarget.value  = currentTarget.value.replace(expression.regex, expression.replace);
-    })  
+    mask.expressions.forEach((expression) => {
+      currentTarget.value = currentTarget.value.replace(
+        expression.regex,
+        expression.replace
+      );
+    });
   }
 
   bindEvents() {
+    this.checkboxChange = this.checkboxChange.bind(this);
     this.fieldChange = this.fieldChange.bind(this);
     this.fetchSubmit = this.fetchSubmit.bind(this);
     this.maskField = this.maskField.bind(this);
@@ -200,10 +241,15 @@ class ValidateForm {
     this.fields.forEach((field) => {
       field.addEventListener("change", this.fieldChange);
       field.addEventListener("blur", this.fieldChange);
-      if(field.hasAttribute('data-mask')){        
-          field.addEventListener('keyup', this.maskField);        
+      if (field.hasAttribute("data-mask")) {
+        field.addEventListener("keyup", this.maskField);
       }
     });
+    if(this.checkboxes){
+      this.checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", this.checkboxChange);
+      })
+    }   
 
     this.form.addEventListener("submit", this.fetchSubmit);
   }
@@ -214,7 +260,7 @@ class ValidateForm {
   }
 }
 
-function basicForm(selector, submit, validations, masks){
+window.basicForm = (selector, submit, validations, masks) => {
   const form = new ValidateForm(selector, submit, validations, masks);
   form.init();
-}
+};

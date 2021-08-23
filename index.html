@@ -31,11 +31,21 @@
     <div data-section="first" id="teste1" style="height: 100vh" data-sanimation="fadeIn">Teste</div>
     <div data-section id="teste2" style="height: 100vh" data-sanimation="fadeIn">Teste2</div>
     <div data-section id="teste3" style="height: 100vh" data-sanimation="fadeIn">Teste3</div>
-    <form action="" data-form="form">
+    <form action="" data-form="form" novalidate>
       <input type="text" id="cnpj" data-form="field" data-mask="cpf" maxlength="14" required>
       <p class="error"></p>
       <input type="text" id="telefone" data-form="field" data-mask="telefone" maxlength="15" required>
       <p class="error"></p>
+      <div data-form="group" id="radio">
+        <input type="radio" name="radio" id="radio" value="1">
+        <input type="radio" name="radio" id="radio2" value="2">
+        <input type="radio" name="radio" id="radio3" value="2">
+      </div>
+      <p class="error"></p>
+      
+      <input type="checkbox" id="privacidade" data-form="checkbox" required> Teste
+      <p class="error"></p>
+      <button type="submit">Enviar</button>
     </form>  
 
     <div>
@@ -177,6 +187,9 @@
       (() => {
         basicForm('[data-form="form"]');
       })();      
+    </script>
+    <script>
+  
     </script>
   </body>
 </html>

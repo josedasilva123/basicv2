@@ -4,11 +4,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: {
         basic: ['@babel/polyfill', './js/index.js'],
-        form: ['./js/modules/form.js'],
+        form: ['@babel/polyfill', './js/modules/form.js'],
     },
-    output: {
-        path: path.join(__dirname, 'public'),
-        filename: '[name].js'
+    output: {        
+        filename: '[name].js',
+        path: path.join(__dirname, 'public')
     },
     module: {
         rules :[
