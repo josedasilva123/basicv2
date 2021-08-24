@@ -2,7 +2,10 @@ class ValidateForm {
   constructor(form, submit, validations, masks) {
     this.form = document.querySelector(form);
     this.fields = this.form.querySelectorAll(`[data-form="field"]`);
+    this.groups = this.form.querySelectorAll(`[data-form="group"]`);
     this.checkboxes = this.form.querySelectorAll(`[data-form="checkbox"]`);
+    this.navigation = this.form.querySelector(`[data-form="navigation"]`);
+    this.steps = this.form.querySelectorAll(`[data-step]`);
     this.types = {
       email: {
         regex:
@@ -149,18 +152,42 @@ class ValidateForm {
     return check.status;
   }
 
-  checkGroup() {
-    const groups = this.form.querySelectorAll('[data-form="group"]');
-    if(groups){
-      groups.forEach(group => {
-        const inputs = group.querySelectorAll('input');
-        console.log(inputs);
-      })
+  checkGroup(group) {
+    let check = {};
+    const inputs = group.querySelectorAll("input");
+    const validation = Array.from(inputs).map((input) => {
+      if (input.checked) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    const number = validation.reduce((soma, i) => {
+      return soma + i;
+    });
+    let min;
+    if (group.dataset.min) {
+      min = +group.dataset.min;
+    } else {
+      min = 1;
     }
+    const max = +group.dataset.max;
+    if (number < min) {
+      check.status = true;
+      check.text = `Você precisa marcar pelo menos ${min} opções(ão)`;
+    } else if (max && number > max) {
+      check.status = true;
+      check.text = `Você precisa marcar no máximo ${max} opções(ão)`;
+    } else {
+      check.status = false;
+      check.text = "";
+    }
+    this.toggleError(check, group);
+    return check.status;
   }
+
   checkCheckbox(checkbox) {
     let check = {};
-
     if (!checkbox.checked && checkbox.hasAttribute("required")) {
       check.status = true;
       check.text = "Marcar esta caixa é obrigatório.";
@@ -172,7 +199,11 @@ class ValidateForm {
     return check.status;
   }
 
-  checkboxChange({currentTarget}){
+  groupChange(target){
+    this.checkGroup(target);
+  }
+
+  checkboxChange({ currentTarget }) {
     this.checkCheckbox(currentTarget);
   }
 
@@ -180,20 +211,83 @@ class ValidateForm {
     this.checkField(currentTarget);
   }
 
+  errorCheck(selector) {
+    const fields = selector.querySelectorAll(`[data-form="field"]`);
+    const checkboxes = selector.querySelectorAll(`[data-form="checkbox"]`);
+    const groups = selector.querySelectorAll(`[data-form="group"]`);
+    const fieldErrors = Array.from(fields).map((field) => {
+      const validation = this.checkField(field);
+      return validation;
+    });
+    const checkboxErrors = Array.from(checkboxes).map((checkbox) => {
+      const validation = this.checkCheckbox(checkbox);
+      return validation;
+    });
+    const groupErrors = Array.from(groups).map((group) => {
+      const validation = this.checkGroup(group);
+      return validation;
+    });
+    if (
+      fieldErrors.every((element) => element == false) &&
+      checkboxErrors.every((element) => element == false) &&
+      groupErrors.every((element) => element == false)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  previousStep(event) {
+    event.preventDefault();
+    const currentStep = +this.form.dataset.index;
+    const previousStep = currentStep - 1;
+
+    if (currentStep > 0) {
+      this.steps.forEach((step) => {
+        if (step.classList.contains(this.activeClass)) {
+          step.classList.remove(this.activeClass);
+        }
+        this.steps[previousStep].classList.add(this.activeClass);
+        this.form.setAttribute("data-index", previousStep);
+        if (this.navigation) {
+          this.updateNavigation(previousStep);
+        }
+      });
+    }
+  }
+
+  nextStep(event) {
+    event.preventDefault();
+    const currentStep = +this.form.dataset.index;
+    if (this.errorCheck(this.steps[currentStep])) {
+      const nextStep = currentStep + 1;
+
+      if (currentStep < this.steps.length) {
+        this.steps.forEach((step) => {
+          if (step.classList.contains(this.activeClass)) {
+            step.classList.remove(this.activeClass);
+          }
+          this.steps[nextStep].classList.add(this.activeClass);
+          this.form.setAttribute("data-index", nextStep);
+          if (this.navigation) {
+            this.updateNavigation(nextStep);
+          }
+        });
+      }
+    }
+  }
+
+  updateNavigation(index){
+    const navigationSteps = this.navigation.querySelectorAll('li');
+    navigationSteps.forEach(step => {
+      step.classList.remove(this.activeClass);
+    })
+    navigationSteps[index].classList.add(this.activeClass);
+  }
+
   async fetchSubmit(event) {
-    const fieldErrors = Array.from(this.fields).map((field) => {
-      const check = this.checkField(field);
-      return check;
-    });
-    const checkboxErrors = Array.from(this.checkboxes).map((checkbox) => {
-      const check = this.checkCheckbox(checkbox);
-      return check;
-    });
-
-    this.checkGroup();
-    console.log(checkboxErrors);
-
-    if (fieldErrors.every((element) => element == false)) {
+    if (this.errorCheck(this.form)) {
       if (this.submit) {
         event.preventDefault();
         const { url, options } = this.submit;
@@ -231,6 +325,8 @@ class ValidateForm {
   }
 
   bindEvents() {
+    this.previousStep = this.previousStep.bind(this);
+    this.nextStep = this.nextStep.bind(this);
     this.checkboxChange = this.checkboxChange.bind(this);
     this.fieldChange = this.fieldChange.bind(this);
     this.fetchSubmit = this.fetchSubmit.bind(this);
@@ -245,11 +341,41 @@ class ValidateForm {
         field.addEventListener("keyup", this.maskField);
       }
     });
-    if(this.checkboxes){
+
+    if (this.checkboxes) {
       this.checkboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", this.checkboxChange);
+      });
+    }
+
+    if (this.groups) {
+      this.groups.forEach((group) => {
+        const inputs = group.querySelectorAll('input');
+        inputs.forEach((input) => {
+          input.addEventListener("change", () => {
+            this.groupChange(group);
+          });
+        })  
       })
-    }   
+    }
+
+    if (this.steps) {
+      this.steps.forEach((step) => {
+        const previous = step.querySelector(`[data-stepPrevious]`);
+        const next = step.querySelector(`[data-stepNext]`);
+        if (previous) {
+          previous.addEventListener("click", this.previousStep);
+        }
+        if (next) {
+          next.addEventListener("click", this.nextStep);
+        }
+      });
+      this.steps[0].classList.add(this.activeClass);
+      this.form.setAttribute("data-index", 0);
+    }
+    if (this.navigation) {
+      this.updateNavigation(0);
+    }    
 
     this.form.addEventListener("submit", this.fetchSubmit);
   }

@@ -12,6 +12,15 @@
   li.ativo{
     color: red;
   }
+  [data-step]{
+    display: none;
+  }
+  [data-step].ativo{
+    display: block;
+  }
+  [data-form="navigation"] li.ativo{
+    color: red;
+  }
   </style>  
   <body>   
     <h1>This is Basic</h1> 
@@ -32,20 +41,37 @@
     <div data-section id="teste2" style="height: 100vh" data-sanimation="fadeIn">Teste2</div>
     <div data-section id="teste3" style="height: 100vh" data-sanimation="fadeIn">Teste3</div>
     <form action="" data-form="form" novalidate>
-      <input type="text" id="cnpj" data-form="field" data-mask="cpf" maxlength="14" required>
-      <p class="error"></p>
-      <input type="text" id="telefone" data-form="field" data-mask="telefone" maxlength="15" required>
-      <p class="error"></p>
-      <div data-form="group" id="radio">
-        <input type="radio" name="radio" id="radio" value="1">
-        <input type="radio" name="radio" id="radio2" value="2">
-        <input type="radio" name="radio" id="radio3" value="2">
+      <ul data-form="navigation">
+        <li>
+          Fase 1
+        </li>
+        <li>
+          Fase 2
+        </li>
+      </ul>
+      <div data-step>
+        <input type="text" id="cnpj" data-form="field" data-mask="cpf" maxlength="14" required>
+        <p class="error"></p>
+        <input type="text" id="telefone" data-form="field" data-mask="telefone" maxlength="15" required>
+        <p class="error"></p>
+        <div data-form="group" id="radio">
+          <input type="radio" name="radio" id="radio" value="1">
+          <input type="radio" name="radio" id="radio2" value="2">
+          <input type="radio" name="radio" id="radio3" value="2">
+        </div>
+        <p class="error"></p>        
+        <input type="checkbox" id="privacidade" data-form="checkbox" required> Teste
+        <p class="error"></p>  
+        <button data-stepNext>Próximo</button>
       </div>
-      <p class="error"></p>
-      
-      <input type="checkbox" id="privacidade" data-form="checkbox" required> Teste
-      <p class="error"></p>
-      <button type="submit">Enviar</button>
+      <div data-step>
+        <input type="text" name="nome" id="nome" data-form="field" required>
+        <p class="error"></p>
+        <input type="email" name="email" id="email" data-regex="email" data-form="field" required>
+        <p class="error"></p>
+        <button data-stepPrevious>Anterior</button>
+        <button type="submit">Enviar</button>
+      </div>
     </form>  
 
     <div>
@@ -187,9 +213,6 @@
       (() => {
         basicForm('[data-form="form"]');
       })();      
-    </script>
-    <script>
-  
     </script>
   </body>
 </html>
