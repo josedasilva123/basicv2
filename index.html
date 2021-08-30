@@ -21,32 +21,103 @@
   [data-form="navigation"] li.ativo{
     color: red;
   }
+  .teste1.ativo{
+    top: 20px;
+    left: 20px;
+  }
+  .b-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+  .b-modal.ativo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .b-modal .b-modal-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.2);
+  }
+  .b-modal .b-modal-content{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: #fff;
+  }
   </style>  
-  <body>   
-    <h1>This is Basic</h1> 
-    <nav data-fixed="top">
-      <ul data-menu>
-        <li>
-          <a data-menu-link href="#teste1">Teste 1</a>
-        </li>
-        <li>
-          <a data-menu-link href="#teste2">Teste 2</a>
-        </li>
-        <li>
-          <a data-menu-link href="#teste3">Teste 3</a>
-        </li>
-      </ul>
-    </nav>
-    <div data-section="first" id="teste1" style="height: 100vh" data-sanimation="fadeIn">Teste</div>
-    <div data-section id="teste2" style="height: 100vh" data-sanimation="fadeIn">Teste2</div>
-    <div data-section id="teste3" style="height: 100vh" data-sanimation="fadeIn">Teste3</div>
+  <body> 
+    <header>
+      <div class="b-container">
+        <div class="logo">
+          Logo
+        </div>
+        <div class="b-menu-toggle-box">
+          <div class="b-mobile ativo" data-toggle="exemplo3"> 
+            Abre Menu
+          </div> 
+          <div class="b-mobile" data-toggle="exemplo3"> 
+            Fecha Menu
+          </div> 
+        </div> 
+        <div class="menu">
+          <nav>              
+            <ul class="b-menu" data-element="exemplo3" data-animation="fadeIn" data-outclick data-menu>
+              <li>
+                <a href="/index.html" data-menu-link>Item 1</a>             
+              </li>
+              <li>
+                <a href="" data-menu-link>Item 2</a>             
+              </li>
+              <li>
+                <a href="" data-menu-link>Item 3</a>             
+              </li>
+            </ul>    
+          </nav> 
+        </div>
+      </div>
+    </header>
+    <button class="ativo" data-modal="exemplo" data-openModal>Abre Modal</button>
+    <button data-modal="exemplo" data-openModal>Fecha Modal</button>
+    <div data-element="exemplo" class="b-modal">
+      <div class="b-modal-overlay" data-modal="exemplo" data-closeModal></div> 
+      <div class="b-modal-content">
+        <button data-modal="exemplo" data-closeModal>Fechar</button>
+        Modal 
+      </div>       
+    </div>
+    <div>
+      <div data-tab-content="exemplo2" class="ativo" data-animation="fadeIn">Aba 1</div>
+      <div data-tab-content="exemplo2" data-animation="fadeIn">Aba 2</div>
+    </div>
+    <ul data-tab-menu="exemplo2" data-autoplay>
+      <li class="ativo">Aba 1</li>
+      <li>Aba 2</li>
+    </ul>
+    <button data-tab-prev="exemplo2">Anterior</button>
+    <button data-tab-next="exemplo2">Próximo</button>
+    
     <form action="" data-form="form" novalidate>
       <ul data-form="navigation">
         <li>
-          Fase 1
+          1. CONTATO
         </li>
         <li>
-          Fase 2
+          2. LOCALIZAÇÃO
+        </li>
+        <li>
+          3. DESCRIÇÃO
+        </li>
+        <li>
+          4. ANEXOS
         </li>
       </ul>
       <div data-step>
@@ -72,140 +143,20 @@
         <button data-stepPrevious>Anterior</button>
         <button type="submit">Enviar</button>
       </div>
-    </form>  
-
-    <div>
-      <div data-tab-content="exemplo" class="ativo">
-        <ul class="timeline">
-          <li>
-            <div class="left">
-              <div class="image">
-                <img src="/assets/PortoTingui.svg" alt="Logo">
-              </div>
-            </div>
-            <div class="right">
-              <h3 class="small-title">Rottas lança o residencial
-                Alecrim</h3>
-                <p class="paragraph center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut tincidunt purus, quis vestibulum ante.</p>
-            </div>
-            <span class="sphere"></span>
-          </li>
-        </ul>
-      </div>
-      <div data-tab-content="exemplo">
-        <ul class="timeline">
-          <li>
-            <div class="left">
-              <div class="image">
-                <img src="/assets/PortoTingui.svg" alt="Logo">
-              </div>
-            </div>
-            <div class="right">
-              <h3 class="small-title">Rottas lança o residencial
-                Alecrim</h3>
-                <p class="paragraph center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut tincidunt purus, quis vestibulum ante.</p>
-            </div>
-            <span class="sphere"></span>
-          </li>
-        </ul>
-      </div>
-      <div data-tab-content="exemplo">
-        <ul class="timeline">
-          <li>
-            <div class="left">
-              <div class="image">
-                <img src="/assets/PortoTingui.svg" alt="Logo">
-              </div>
-            </div>
-            <div class="right">
-              <h3 class="small-title">Rottas lança o residencial
-                Alecrim</h3>
-                <p class="paragraph center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut tincidunt purus, quis vestibulum ante.</p>
-            </div>
-            <span class="sphere"></span>
-          </li>
-        </ul>
-      </div>
-      <div data-tab-content="exemplo">
-        <ul class="timeline">
-          <li>
-            <div class="left">
-              <div class="image">
-                <img src="/assets/PortoTingui.svg" alt="Logo">
-              </div>
-            </div>
-            <div class="right">
-              <h3 class="small-title">Rottas lança o residencial
-                Alecrim</h3>
-                <p class="paragraph center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut tincidunt purus, quis vestibulum ante.</p>
-            </div>
-            <span class="sphere"></span>
-          </li>
-        </ul>
-      </div>
-      <div data-tab-content="exemplo">
-        <ul class="timeline">
-          <li>
-            <div class="left">
-              <div class="image">
-                <img src="/assets/PortoTingui.svg" alt="Logo">
-              </div>
-            </div>
-            <div class="right">
-              <h3 class="small-title">Rottas lança o residencial
-                Alecrim</h3>
-                <p class="paragraph center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut tincidunt purus, quis vestibulum ante.</p>
-            </div>
-            <span class="sphere"></span>
-          </li>
-        </ul>
-      </div>
-      <div data-tab-content="exemplo">
-        <ul class="timeline">
-          <li>
-            <div class="left">
-              <div class="image">
-                <img src="/assets/PortoTingui.svg" alt="Logo">
-              </div>
-            </div>
-            <div class="right">
-              <h3 class="small-title">Rottas lança o residencial
-                Alecrim</h3>
-                <p class="paragraph center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut tincidunt purus, quis vestibulum ante.</p>
-            </div>
-            <span class="sphere"></span>
-          </li>
-        </ul>
-      </div>
-      <div data-tab-content="exemplo">
-        <ul class="timeline">
-          <li>
-            <div class="left">
-              <div class="image">
-                <img src="/assets/PortoTingui.svg" alt="Logo">
-              </div>
-            </div>
-            <div class="right">
-              <h3 class="small-title">Rottas lança o residencial
-                Alecrim</h3>
-                <p class="paragraph center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut tincidunt purus, quis vestibulum ante.</p>
-            </div>
-            <span class="sphere"></span>
-          </li>
-        </ul>
-      </div>
-      <button data-tab-prev="exemplo">Anterior</button>
-      <button data-tab-next="exemplo">Próximo</button>
+    </form> 
+    
+    <label for="exemplo1" class="colapse-label">Item 1</label>
+    <input type="checkbox" name="exemplo" id="exemplo1" data-colapse>
+    <div class="colapse-content">
+      Conteúdo 1
     </div>
-    <ul data-tab-menu="exemplo" data-autoplay>
-      <li class="ativo">2021</li>
-      <li>2018</li>
-      <li>2015</li>
-      <li>2013</li>
-      <li>2011</li>
-      <li>2010</li>
-      <li>2008</li>
-    </ul>    
+    <label for="exemplo2" class="colapse-label">Item 2</label>
+    <input type="checkbox" name="exemplo" id="exemplo2" data-colapse>
+    <div class="colapse-content">
+      Conteúdo 2
+    </div>
+
+  
 </div>
     <script type="module" src="public/basic.js"></script>   
     <script src="js/modules/form.js"></script>

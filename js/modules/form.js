@@ -12,9 +12,27 @@ class ValidateForm {
           /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
         error: "Digite um endereço de e-mail válido.",
       },
+      cep: {
+        regex: 
+        /^\d{5}-\d{3}$/,
+        error: "Digite um CEP válido.",
+      },
       ...validations,
     };
     this.masks = {
+      cep: {
+        expressions: [
+          {
+            regex: /\D/g,
+            replace: "",
+          },
+          {
+            regex: /^(\d{5})(\d)/,
+            replace: "$1-$2",
+          },          
+        ],
+        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,
+      },
       cpf: {
         expressions: [
           {
