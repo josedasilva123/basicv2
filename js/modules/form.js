@@ -360,13 +360,13 @@ class ValidateForm {
       }
     });
 
-    if (this.checkboxes) {
+    if (this.checkboxes.length > 0) {
       this.checkboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", this.checkboxChange);
       });
     }
 
-    if (this.groups) {
+    if (this.groups.length > 0) {
       this.groups.forEach((group) => {
         const inputs = group.querySelectorAll('input');
         inputs.forEach((input) => {
@@ -377,7 +377,7 @@ class ValidateForm {
       })
     }
 
-    if (this.steps) {
+    if (this.steps.length > 0) {
       this.steps.forEach((step) => {
         const previous = step.querySelector(`[data-stepPrevious]`);
         const next = step.querySelector(`[data-stepNext]`);
@@ -391,6 +391,7 @@ class ValidateForm {
       this.steps[0].classList.add(this.activeClass);
       this.form.setAttribute("data-index", 0);
     }
+
     if (this.navigation) {
       this.updateNavigation(0);
     }    

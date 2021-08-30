@@ -144,6 +144,29 @@
         <button type="submit">Enviar</button>
       </div>
     </form> 
+
+    <form action="" class="rottas-form" id="newsletterForm" novalidate>
+      <div class="input-grid">
+          <label class="label w50">
+              Nome
+              <input type="text" name="name" id="name" placeholder="Seu nome" data-form="field" required>
+              <p class="error"></p>
+          </label>
+          <label class="label w50">
+              Email
+              <input type="email" name="email" id="email" placeholder="Seu e-mail" data-form="field" data-regex="email" required>
+              <p class="error"></p>
+          </label>
+          <div class="policy">
+              <input type="checkbox" name="privacidade" id="privacidade" data-form="checkbox" required>
+              Eu aceito a <a href="#" class="link">Política de Privacidade</a>
+              <p class="error"></p>
+          </div>
+      </div>
+      <div class="buttons-grid">
+          <button class="btn solid2 medium uppercase" type="submit"><img src="<?php echo get_template_directory_uri(); ?>/assets/MailOrange.svg" alt="Enviar" style="margin-right: .4rem;"> ENVIAR</button>
+      </div>
+  </form>
     
     <label for="exemplo1" class="colapse-label">Item 1</label>
     <input type="checkbox" name="exemplo" id="exemplo1" data-colapse>
@@ -163,6 +186,7 @@
     <script>
       (() => {
         basicForm('[data-form="form"]');
+        basicForm('#newsletterForm');
       })();      
     </script>
   </body>
