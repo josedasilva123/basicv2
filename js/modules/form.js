@@ -17,6 +17,11 @@ class ValidateForm {
         /^\d{5}-\d{3}$/,
         error: "Digite um CEP válido.",
       },
+      telefone: {
+        regex: 
+        /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/,
+        error: "Digite um telefone ou celular válido",
+      },
       ...validations,
     };
     this.masks = {
@@ -149,7 +154,7 @@ class ValidateForm {
     error.innerText = check.text;
   }
 
-  checkField(field) {
+  checkField(field, errorUpdate) {
     let check = {};
     if (field.value === "" && field.hasAttribute("required")) {
       check.status = true;
@@ -166,11 +171,13 @@ class ValidateForm {
       check.status = false;
       check.text = "";
     }
-    this.toggleError(check, field);
+    if(errorUpdate){
+      this.toggleError(check, field);
+    }
     return check.status;
   }
 
-  checkGroup(group) {
+  checkGroup(group, errorUpdate) {
     let check = {};
     const inputs = group.querySelectorAll("input");
     const validation = Array.from(inputs).map((input) => {
@@ -200,11 +207,13 @@ class ValidateForm {
       check.status = false;
       check.text = "";
     }
-    this.toggleError(check, group);
+    if(errorUpdate){
+      this.toggleError(check, group);
+    }  
     return check.status;
   }
 
-  checkCheckbox(checkbox) {
+  checkCheckbox(checkbox, errorUpdate) {
     let check = {};
     if (!checkbox.checked && checkbox.hasAttribute("required")) {
       check.status = true;
@@ -213,36 +222,38 @@ class ValidateForm {
       check.status = false;
       check.text = "";
     }
-    this.toggleError(check, checkbox);
+    if(errorUpdate){
+      this.toggleError(check, checkbox);
+    }  
     return check.status;
   }
 
   groupChange(target){
-    this.checkGroup(target);
+    this.checkGroup(target , true);
   }
 
   checkboxChange({ currentTarget }) {
-    this.checkCheckbox(currentTarget);
+    this.checkCheckbox(currentTarget, true);
   }
 
   fieldChange({ currentTarget }) {
-    this.checkField(currentTarget);
+    this.checkField(currentTarget, true);
   }
 
-  errorCheck(selector) {
+  errorCheck(selector, errorUpdate) {
     const fields = selector.querySelectorAll(`[data-form="field"]`);
     const checkboxes = selector.querySelectorAll(`[data-form="checkbox"]`);
     const groups = selector.querySelectorAll(`[data-form="group"]`);
     const fieldErrors = Array.from(fields).map((field) => {
-      const validation = this.checkField(field);
+      const validation = this.checkField(field, errorUpdate);
       return validation;
     });
     const checkboxErrors = Array.from(checkboxes).map((checkbox) => {
-      const validation = this.checkCheckbox(checkbox);
+      const validation = this.checkCheckbox(checkbox, errorUpdate);
       return validation;
     });
     const groupErrors = Array.from(groups).map((group) => {
-      const validation = this.checkGroup(group);
+      const validation = this.checkGroup(group, errorUpdate);
       return validation;
     });
     if (
@@ -254,6 +265,15 @@ class ValidateForm {
     } else {
       return false;
     }
+  }
+
+  stepAdvancingCheck(step){
+    const button = step.querySelector('[data-stepNext]');
+    if(this.errorCheck(step, false)){
+      button.disabled = false;
+    } else {
+      button.disabled = true;
+    }   
   }
 
   previousStep(event) {
@@ -278,7 +298,7 @@ class ValidateForm {
   nextStep(event) {
     event.preventDefault();
     const currentStep = +this.form.dataset.index;
-    if (this.errorCheck(this.steps[currentStep])) {
+    if (this.errorCheck(this.steps[currentStep], true)) {
       const nextStep = currentStep + 1;
 
       if (currentStep < this.steps.length) {
@@ -305,7 +325,7 @@ class ValidateForm {
   }
 
   async fetchSubmit(event) {
-    if (this.errorCheck(this.form)) {
+    if (this.errorCheck(this.form, true)) {
       if (this.submit) {
         event.preventDefault();
         const { url, options } = this.submit;
@@ -381,11 +401,21 @@ class ValidateForm {
       this.steps.forEach((step) => {
         const previous = step.querySelector(`[data-stepPrevious]`);
         const next = step.querySelector(`[data-stepNext]`);
+        const fields = step.querySelectorAll(`[data-form="field"]`);
+        const checkboxes = step.querySelectorAll(`[data-form="checkbox"]`);
+        const groups = step.querySelectorAll(`[data-form="group"]`);
+
+        [...fields, ...checkboxes, ...groups].forEach(formField => {
+          formField.addEventListener('change', () => {
+            this.stepAdvancingCheck(step, false);  
+          })
+        })
         if (previous) {
           previous.addEventListener("click", this.previousStep);
         }
         if (next) {
           next.addEventListener("click", this.nextStep);
+          next.disabled = true;
         }
       });
       this.steps[0].classList.add(this.activeClass);
@@ -405,7 +435,29 @@ class ValidateForm {
   }
 }
 
-window.basicForm = (selector, submit, validations, masks) => {
+window.basicForm = (selector, options) => {
+  let submit;
+  let validations;
+  let masks;
+  
+  if(options.submit){
+    submit = options.submit; 
+  } else {
+    submit = false;
+  }
+
+  if(options.validations){
+    validations = options.validations; 
+  } else {
+    validations = false;
+  }
+
+  if(options.masks){
+    masks = options.masks; 
+  } else {
+    masks = false;
+  }
+
   const form = new ValidateForm(selector, submit, validations, masks);
   form.init();
 };
