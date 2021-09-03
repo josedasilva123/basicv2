@@ -439,24 +439,31 @@ window.basicForm = (selector, options) => {
   let submit;
   let validations;
   let masks;
+
+  if(options){
+    if(options.submit){
+      submit = options.submit; 
+    } else {
+      submit = false;
+    }
   
-  if(options.submit){
-    submit = options.submit; 
+    if(options.validations){
+      validations = options.validations; 
+    } else {
+      validations = false;
+    }
+  
+    if(options.masks){
+      masks = options.masks; 
+    } else {
+      masks = false;
+    }
   } else {
     submit = false;
-  }
-
-  if(options.validations){
-    validations = options.validations; 
-  } else {
     validations = false;
+    masks = false;  
   }
 
-  if(options.masks){
-    masks = options.masks; 
-  } else {
-    masks = false;
-  }
 
   const form = new ValidateForm(selector, submit, validations, masks);
   form.init();
