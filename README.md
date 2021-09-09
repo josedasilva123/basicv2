@@ -563,7 +563,7 @@ Exemplo:
 </label>  
 ```
 
-**Formulário Etapas**
+**Formulário com Etapas**
 
 É possível criar formulários com etapa através do módulo de formulário. Utilizando divisões dentro do form com o atributo `data-step`
 
