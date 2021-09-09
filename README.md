@@ -206,7 +206,7 @@ Aplicação em HTML:
 
 ## toggleButton
 
-Este módulo auxiliar a criação de botões para exibirem ou fecharem outros elementos. Ideal para menus mobiles, carrinhos, dropdowns ativos via click, entre outros...
+Este módulo auxilia a criação de botões para exibirem ou fecharem outros elementos. Ideal para menus mobiles, carrinhos, dropdowns ativos via click, entre outros...
 
 Iniciando (em index.js):
 ```js
