@@ -422,8 +422,6 @@ CSS simples para criação de acordeons e sanfonas.
   Conteúdo 2
 </div>
 ```
-------------
-
 ## Formulário
 
 O módulo de formulário, adiciona diversas funcionalidades formulários: como validação de campos por regular expression, mascaras, a possibilidade da criação de formulários com etapas, entre outras.
@@ -565,4 +563,26 @@ Exemplo:
 </label>  
 ```
 
+**Formulário Etapas**
+
+É possível criar formulários com etapa através do módulo de formulário. Utilizando divisões dentro do form com o atributo `data-step`
+
+
+```html
+<form id="formExemplo">
+    <div data-step>
+      <input type="text" name="nome" id="nome" data-form="field" required/>
+      <p class="error"></p>
+      <button data-stepNext>Próximo</button>
+    </div>  
+    <div data-step>
+      <input type="text" name="email" id="email" data-form"field" required/>
+      <p class="error"></p>
+      <button data-stepPrevious>Anterior</button>
+      <button type="submit">Enviar</button>
+     </div>    
+</form>  
+```
+
+------------
 **This is basic!**
