@@ -56,7 +56,7 @@ Attributos CSS Padrão:
 | Atributo | Descrição |
 | ------ | ------ |
 | [data-fixed="top"] | Fixa o elemento em top: 0 |
-| [data-fixed="bottom"] | Fixa o elemento em margin: 0 |
+| [data-fixed="bottom"] | Fixa o elemento em bottom: 0 |
 
 
 ## scrollAnimation
