@@ -12,7 +12,7 @@ O Basic é divido em módulos, e abaixo consta a documentação de como utilizar
 - [tabs](#tabs)
 - [toggleButton](#togglebutton)
 - [menu](#menu)
-- [formulário](#formulario)
+- [formulário](#formulário)
 
 **Módulos CSS**
 - [colapse](#colapse)
@@ -423,7 +423,7 @@ CSS simples para criação de acordeons e sanfonas.
   Conteúdo 2
 </div>
 ```
-## Formulário
+## formulário
 
 O módulo de formulário, adiciona diversas funcionalidades formulários: como validação de campos por regular expression, mascaras, a possibilidade da criação de formulários com etapas, entre outras.
 
