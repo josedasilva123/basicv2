@@ -12,6 +12,7 @@ O Basic é divido em módulos, e abaixo consta a documentação de como utilizar
 - [tabs](#tabs)
 - [toggleButton](#togglebutton)
 - [menu](#menu)
+- [formulário](#formulario)
 
 **Módulos CSS**
 - [colapse](#colapse)
