@@ -495,7 +495,7 @@ Adicionando novas mascaras ao formulário:
 <script>
 (function() {
   basicForm('#formExemplo', {
-    validations: [
+    masks: [
       mascaraExemplo: {
         expressions: [
           {
@@ -523,13 +523,13 @@ Adicionando novas mascaras ao formulário:
 </script>  
 ```
 
-
 Aplicando validação de regex com o atributo `data-regex`:
 ```html
 <label>
       <input type="text" name="telefone" id="telefone" data-form"field" data-regex="telefone" required />
       <p class="error"></p>
 </label>  
+```
 
 Validações disponíveis:
 | Mascará | Atributo |
@@ -538,8 +538,31 @@ Validações disponíveis:
 | Email | data-regex="email" |
 | Cep | data-regex="cep" |
 
+Adicionando novas validações ao formulário:
 ```html
+<script>
+(function() {
+  basicForm('#formExemplo', {
+    validations: [
+      validacaoExemplo: {
+        regex:
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+        error: "Mensagem de erro.",
+      },
+    ]
+  });
+})();
+</script>  
+```
 
-***Além dos módulos em JS, o Basic tem disponível um conjunto de modulos CSS para funcionalidades mais simples, segue a lista e instruções de uso abaixo:***
+***Máscaras e validações podem ser usadas em conjunto:***
+
+Exemplo:
+```html
+<label>
+      <input type="text" name="telefone" id="telefone" data-form"field" data-mask="telefone" data-regex="telefone" required />
+      <p class="error"></p>
+</label>  
+```
 
 **This is basic!**
