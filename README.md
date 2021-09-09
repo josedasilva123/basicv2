@@ -1,4 +1,4 @@
-# basicv2 - 0.2.0
+# basicv2 - 0.3.0
 Basic é um framework muito simples em Javascript e SCSS criado para facilitar a criação de front-end para websites. O objetivo é entregar funcionalidades que são recorrentes na criação de sites com mínimo de CSS possível, para que a customização possa ser fácil e livre.
 
 O Basic é divido em módulos, e abaixo consta a documentação de como utilizar cada um deles...
@@ -390,7 +390,6 @@ Atributos Especiais:
 ```
 
 
-
 ***Além dos módulos em JS, o Basic tem disponível um conjunto de modulos CSS para funcionalidades mais simples, segue a lista e instruções de uso abaixo:***
 
 ## colapse
@@ -424,5 +423,123 @@ CSS simples para criação de acordeons e sanfonas.
 </div>
 ```
 ------------
+
+## Formulário
+
+O módulo de formulário, adiciona diversas funcionalidades formulários: como validação de campos por regular expression, mascaras, a possibilidade da criação de formulários com etapas, entre outras.
+
+Para inicializar o módulo, é necessário importa-lo separamente: 
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/form.js"></script>
+```
+
+Iniciando um formulário.
+
+
+**Formulário Simples**
+```html
+<form id="formExemplo">
+    <input type="text" name="nome" id="nome" data-form="field" required/>
+    <p class="error"></p>
+    <input type="text" name="email" id="email" data-form"field" required/>
+    <p class="error"></p>
+    <button type="submit">Enviar</button>
+</form>  
+```
+
+Iniciando o formulário: é necessário iniciar os formulários um via javascript.
+```html
+<script>
+(function() {
+  basicForm('#formExemplo');
+})();
+</script>  
+```
+
+**Formulário com Label**
+```html
+<form id="formExemplo">
+    <label>
+      NOME:
+      <input type="text" name="nome" id="nome" data-form="field" required />
+      <p class="error"></p>
+    </label>  
+    <label>
+      <input type="text" name="email" id="email" data-form"field" required />
+      <p class="error"></p>
+    </label>  
+    <button type="submit">Enviar</button>
+</form>  
+```
+
+Aplicando máscara em um campo com o atributo `data-mask`:
+```html
+<label>
+      <input type="text" name="telefone" id="telefone" data-form"field" data-mask="telefone" required />
+      <p class="error"></p>
+</label>  
+```
+
+Mascaras disponíveis:
+| Mascará | Atributo |
+| ------ | ------ |
+| Telefone | data-mask="telefone" |
+| Cep | data-mask="cep" |
+| CPF | data-mask="cpf" |
+| CNPJ | data-mask="cnpj" |
+| Inteiros | data-mask="inteiros" |
+
+Adicionando novas mascaras ao formulário:
+```html
+<script>
+(function() {
+  basicForm('#formExemplo', {
+    validations: [
+      mascaraExemplo: {
+        expressions: [
+          {
+            regex: /\D/g,
+            replace: "",
+          },
+          {
+            regex: /(\d{3})(\d)/,
+            replace: "$1.$2",
+          },
+          {
+            regex: /(\d{3})(\d)/,
+            replace: "$1.$2",
+          },
+          {
+            regex: /(\d{3})(\d{1,2})$/,
+            replace: "$1-$2",
+          },
+        ],
+        clear: /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,
+      },
+    ]
+  });
+})();
+</script>  
+```
+
+
+Aplicando validação de regex com o atributo `data-regex`:
+```html
+<label>
+      <input type="text" name="telefone" id="telefone" data-form"field" data-regex="telefone" required />
+      <p class="error"></p>
+</label>  
+
+Validações disponíveis:
+| Mascará | Atributo |
+| ------ | ------ |
+| Telefone | data-regex="telefone" |
+| Email | data-regex="email" |
+| Cep | data-regex="cep" |
+
+```html
+
+***Além dos módulos em JS, o Basic tem disponível um conjunto de modulos CSS para funcionalidades mais simples, segue a lista e instruções de uso abaixo:***
 
 **This is basic!**
