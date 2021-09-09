@@ -436,7 +436,7 @@ Para inicializar o módulo, é necessário importa-lo separamente:
 Iniciando um formulário.
 
 
-**Formulário Simples**
+### Formulário Simples
 ```html
 <form id="formExemplo">
     <input type="text" name="nome" id="nome" data-form="field" required/>
@@ -456,7 +456,7 @@ Iniciando o formulário: é necessário iniciar os formulários um via javascrip
 </script>  
 ```
 
-**Formulário com Label**
+### Formulário com Label
 ```html
 <form id="formExemplo">
     <label>
@@ -564,11 +564,9 @@ Exemplo:
 </label>  
 ```
 
-**Formulário com Etapas**
+### Formulário com Etapas
 
 É possível criar formulários com etapa através do módulo de formulário. Utilizando divisões dentro do form com o atributo `data-step`
-
-
 ```html
 <form id="formExemplo">
     <div data-step>
@@ -584,6 +582,60 @@ Exemplo:
      </div>    
 </form>  
 ```
+
+### Checkbox em Formulário
+
+Para validação de checkbox únicos, como por exemplo um aceite de política de privacidade, utilize o atributo `data-form="checkbox"` ao invés de **field**
+```html
+<label>
+      <input type="checkbox" name="privacidade" id="privacidade" data-form="checkbox" required />
+      Eu aceito a Política de Privacidade
+      <p class="error"></p>
+</label>  
+```
+
+### Grupos de Checkboxes ou Radio Buttons
+É possível também criar validação para grupos de checkbox e radiobuttons, e, no caso de checkboxes, configurar um valor mínimo e máximo para seleção dos itens.
+
+Utilização básica:
+```html
+<div data-form="group">
+  <label>
+      Opção A
+      <input type="checkbox" name="opcao" id="opcaoA">
+  </label>  
+   <label>
+      Opção B
+      <input type="checkbox" name="opcao" id="opcaoB">
+  </label> 
+   <label>
+      Opção C
+      <input type="checkbox" name="opcao" id="opcaoC">
+  </label> 
+</div>
+<p class="error"></p>  
+```
+
+Mínimo e Máximo:
+```html
+<div data-form="group" min="1" max="2">
+  <label>
+      Opção A
+      <input type="checkbox" name="opcao" id="opcaoA">
+  </label>  
+   <label>
+      Opção B
+      <input type="checkbox" name="opcao" id="opcaoB">
+  </label> 
+   <label>
+      Opção C
+      <input type="checkbox" name="opcao" id="opcaoC">
+  </label> 
+</div>
+<p class="error"></p>  
+```
+
+***No caso dos checkbox, o basic tem automaticamente como padrão o min=1 e o max=undefined***
 
 ------------
 **This is basic!**
