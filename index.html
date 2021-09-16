@@ -4,190 +4,157 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="public/basic.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>This is Basic</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.css" />
   <style>
-  [data-menu-link].atual{
-    color: red;
-  }  
-  li.ativo{
-    color: red;
-  }
-  [data-step]{
-    display: none;
-  }
-  [data-step].ativo{
-    display: block;
-  }
-  [data-form="navigation"] li.ativo{
-    color: red;
-  }
-  .teste1.ativo{
-    top: 20px;
-    left: 20px;
-  }
-  .b-modal{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-  }
-  .b-modal.ativo{
+  .exemploModal.ativo{
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: fadeIn .7s forwards;
   }
-  .b-modal .b-modal-overlay{
+  .exemploModal .b-modal-overlay{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+    height: 100vh;
     background: rgba(0,0,0,.2);
   }
-  .b-modal .b-modal-content{
-    position: absolute;
-    width: 50%;
-    height: 50%;
+  .exemploModal .b-modal-content{
     background: #fff;
+    padding: 2rem 2rem 3rem;
+  }
+  .exemploModal .b-modal-content{
+    position: relative;
+  }
+  .exemploModal .exemploClose{
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  #header.ativo{
+    width: 100%;
+  }
+  #header .flex-grid{
+    display: flex;
+    justify-content: space-between;
+  }
+  #header .menuSite{
+    display: inline-flex;
+  }
+  #header .menuSite li{
+    padding: .5rem;
+  }
+  @media (max-width: 1020px){
+    #header .menuSite{
+     display: none; 
+    }  
+    #header .menuSite.ativo{
+     display: block; 
+    }  
+  }
+  .abasExemplo .menu{
+    display: flex;
+    background: #cecece
+  }
+  .abasExemplo .menu li{
+    cursor: pointer;
+    font-family: Arial;
+    padding: .5rem;
+    transform: .3s;
+  }
+  .abasExemplo .menu li:hover,
+  .abasExemplo .menu li.ativo{
+    color: blue;
   }
   </style>  
   <body> 
-    <header>
+    <!-- toogleButton: Menu -->
+    <header id="header" data-fixed="top">
       <div class="b-container">
-        <div class="logo">
-          Logo
-        </div>
-        <div class="b-menu-toggle-box">
-          <div class="b-mobile ativo" data-toggle="exemplo3"> 
-            Abre Menu
-          </div> 
-          <div class="b-mobile" data-toggle="exemplo3"> 
-            Fecha Menu
-          </div> 
-        </div> 
-        <div class="menu">
-          <nav>              
-            <ul class="b-menu" data-element="exemplo3" data-animation="fadeIn" data-outclick data-menu>
-              <li>
-                <a href="/index.html" data-menu-link>Item 1</a>             
-              </li>
-              <li>
-                <a href="" data-menu-link>Item 2</a>             
-              </li>
-              <li>
-                <a href="" data-menu-link>Item 3</a>             
-              </li>
-            </ul>    
-          </nav> 
+        <div class="flex-grid">
+          <div class="logo">
+            Logo
+          </div>
+          <div class="menu">
+            <nav>
+              <div class="b-menu-toggle-box">
+                <div class="b-mobile ativo" data-toggle="menu"> 
+                  <i class="fas fa-bars"></i>
+                </div> 
+                <div class="b-mobile" data-toggle="menu"> 
+                  <i class="fas fa-times"></i>
+                </div> 
+              </div>   
+              <ul class="b-menu menuSite" data-element="menu" data-animation="fadeIn" data-outclick data-menu>
+                <li>
+                  <a href="/index.html" data-menu-link>Item 1</a>             
+                </li>
+                <li>
+                  <a href="#" data-menu-link>Item 2</a>             
+                </li>
+                <li>
+                  <a href="#" data-menu-link>Item 3</a>             
+                </li>
+              </ul>    
+            </nav>   
+          </div>
         </div>
       </div>
     </header>
-    <button class="ativo" data-modal="exemplo" data-openModal>Abre Modal</button>
-    <button data-modal="exemplo" data-openModal>Fecha Modal</button>
-    <div data-element="exemplo" class="b-modal">
-      <div class="b-modal-overlay" data-modal="exemplo" data-closeModal></div> 
-      <div class="b-modal-content">
-        <button data-modal="exemplo" data-closeModal>Fechar</button>
-        Modal 
+    
+    <!-- Modal -->
+    <button class="ativo" data-modal="teste" data-openModal>Abre Modal</button>
+    <button data-modal="teste" data-openModal>Fecha Modal</button>
+    <div data-element="teste" class="b-modal exemploModal">
+      <div class="b-modal-overlay" data-modal="teste" data-closeModal></div> 
+      <div class="b-modal-content">        
+        <div class="content">
+          <button data-modal="teste" class="exemploClose" data-closeModal><i class="fas fa-times"></i></button>
+          Conteúdo do Modal
+        </div>         
       </div>       
     </div>
-    <div>
-      <div data-tab-content="exemplo2" class="ativo" data-animation="fadeIn">Aba 1</div>
-      <div data-tab-content="exemplo2" data-animation="fadeIn">Aba 2</div>
-    </div>
-    <ul data-tab-menu="exemplo2" data-autoplay>
-      <li class="ativo">Aba 1</li>
-      <li>Aba 2</li>
-    </ul>
-    <button data-tab-prev="exemplo2">Anterior</button>
-    <button data-tab-next="exemplo2">Próximo</button>
-    
-    <form action="" data-form="form" novalidate>
-      <ul data-form="navigation">
-        <li>
-          1. CONTATO
-        </li>
-        <li>
-          2. LOCALIZAÇÃO
-        </li>
-        <li>
-          3. DESCRIÇÃO
-        </li>
-        <li>
-          4. ANEXOS
-        </li>
-      </ul>
-      <div data-step>
-        <input type="text" id="cnpj" data-form="field" data-mask="cpf" maxlength="14" required>
-        <p class="error"></p>
-        <input type="text" id="telefone" data-form="field" data-mask="telefone" maxlength="15" required>
-        <p class="error"></p>
-        <div data-form="group" id="radio">
-          <input type="radio" name="radio" id="radio" value="1">
-          <input type="radio" name="radio" id="radio2" value="2">
-          <input type="radio" name="radio" id="radio3" value="2">
-        </div>
-        <p class="error"></p>        
-        <input type="checkbox" id="privacidade" data-form="checkbox" required> Teste
-        <p class="error"></p>  
-        <button data-stepNext>Próximo</button>
-      </div>
-      <div data-step>
-        <input type="text" name="nome" id="nome" data-form="field" required>
-        <p class="error"></p>
-        <input type="email" name="email" id="email" data-regex="email" data-form="field" required>
-        <p class="error"></p>
-        <button data-stepPrevious>Anterior</button>
-        <button type="submit">Enviar</button>
-      </div>
-    </form> 
 
-    <form action="" class="rottas-form" id="newsletterForm" novalidate>
-      <div class="input-grid">
-          <label class="label w50">
-              Nome
-              <input type="text" name="name" id="name" placeholder="Seu nome" data-form="field" required>
-              <p class="error"></p>
-          </label>
-          <label class="label w50">
-              Email
-              <input type="email" name="email" id="email" placeholder="Seu e-mail" data-form="field" data-regex="email" required>
-              <p class="error"></p>
-          </label>
-          <div class="policy">
-              <input type="checkbox" name="privacidade" id="privacidade" data-form="checkbox" required>
-              Eu aceito a <a href="#" class="link">Política de Privacidade</a>
-              <p class="error"></p>
+    <!-- Tabs -->
+    <div class="b-container">
+      <div class="abasExemplo">
+        <ul data-tab-menu="minhasAbas" class="menu" data-autoplay>
+          <li class="ativo">Aba 1</li>
+          <li>Aba 2</li>
+          <li>Aba 3</li>
+          <li>Aba 4</li>
+        </ul>
+        <div>
+          <div data-tab-content="minhasAbas" class="ativo" data-animation="fadeInUp">
+            Conteúdo 1
+            <button data-tab-next="minhasAbas">Próximo</button>
           </div>
+          <div data-tab-content="minhasAbas" data-animation="fadeInUp">
+            Conteúdo 2
+            <button data-tab-next="minhasAbas">Próximo</button>
+          </div>
+          <div data-tab-content="minhasAbas" data-animation="fadeInUp">
+            Conteúdo 3
+            <button data-tab-next="minhasAbas">Próximo</button>
+          </div>
+          <div data-tab-content="minhasAbas" data-animation="fadeInUp">
+            Conteúdo 4
+            <button data-tab-next="minhasAbas">Próximo</button>
+          </div>
+        </div>    
+        <button data-tab-prev="minhasAbas">Anterior</button>
+        <button data-tab-next="minhasAbas">Próximo</button>
       </div>
-      <div class="buttons-grid">
-          <button class="btn solid2 medium uppercase" type="submit"><img src="<?php echo get_template_directory_uri(); ?>/assets/MailOrange.svg" alt="Enviar" style="margin-right: .4rem;"> ENVIAR</button>
-      </div>
-  </form>
+    </div>    
     
-    <label for="exemplo1" class="colapse-label">Item 1</label>
-    <input type="checkbox" name="exemplo" id="exemplo1" data-colapse>
-    <div class="colapse-content">
-      Conteúdo 1
-    </div>
-    <label for="exemplo2" class="colapse-label">Item 2</label>
-    <input type="checkbox" name="exemplo" id="exemplo2" data-colapse>
-    <div class="colapse-content">
-      Conteúdo 2
-    </div>
-
-  
-</div>
-    <script type="module" src="public/basic.js"></script>   
-    <script src="js/modules/form.js"></script>
-    <script>
-      (() => {
-        basicForm('[data-form="form"]');
-        basicForm('#newsletterForm');
-      })();      
+    <div style="height: 200vh"></div>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/form.js"></script>
     </script>
   </body>
 </html>
