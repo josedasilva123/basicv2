@@ -61,6 +61,7 @@ export default class Menu {
   }
 
   init() {    
+    console.log('teste');
     this.activeCurrentItem();
     this.activeCurrentSection();
     this.bindEvents();
