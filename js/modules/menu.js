@@ -5,8 +5,14 @@ export default class Menu {
     this.activeClass = "atual";
   }
 
-  activeItem(currentUrl, item) {
-    const href = item.getAttribute("href");
+  activeItem(currentUrl, item, isSection) {
+    let href;
+    if(isSection === true){
+      href = item.getAttribute("href").replace('/','');
+    } else {
+      href = item.getAttribute("href");
+    }
+    
     if (item.classList.contains(this.activeClass) && href != currentUrl) {
       item.classList.remove(this.activeClass);
     } else if (
@@ -27,7 +33,7 @@ export default class Menu {
           const items = menu.querySelectorAll("[data-menu-link]");
           items.forEach((item) => {
             const currentSection = `#${section.getAttribute("id")}`;
-            this.activeItem(currentSection, item);
+            this.activeItem(currentSection, item, true);
           });
         });
       }
