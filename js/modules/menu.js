@@ -7,7 +7,7 @@ export default class Menu {
 
   activeItem(currentUrl, item, isSection) {
     let href;
-    if(isSection === true){
+    if(isSection){
       href = item.getAttribute("href").replace('/','');
     } else {
       href = item.getAttribute("href");
