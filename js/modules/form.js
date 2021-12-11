@@ -1,5 +1,5 @@
 class ValidateForm {
-  constructor(form, submit, validations, masks) {
+  constructor(form, submit, callback, validations, masks) {
     this.form = document.querySelector(form);
     this.fields = this.form.querySelectorAll(`[data-form="field"]`);
     this.groups = this.form.querySelectorAll(`[data-form="group"]`);
@@ -117,6 +117,7 @@ class ValidateForm {
       ...masks,
     };
     this.submit = submit;
+    this.callback = callback;
     this.activeClass = "ativo";
     this.loadingClass = "load";
   }
@@ -345,6 +346,8 @@ class ValidateForm {
         } finally {
           submit.innerHTML = html;
         }
+      } else if (this.callback){
+        this.callback();
       }
     } else {
       event.preventDefault();
@@ -435,10 +438,11 @@ class ValidateForm {
   }
 }
 
-window.basicForm = (selector, options) => {
+window.basicForm = (selector, callback, options) => {
   let submit;
   let validations;
   let masks;
+  let callbackFunction;
 
   if(options){
     if(options.submit){
@@ -464,7 +468,12 @@ window.basicForm = (selector, options) => {
     masks = false;  
   }
 
+  if (callback){
+    callbackFunction = callback;
+  } else {
+    callbackFunction = false;
+  }
 
-  const form = new ValidateForm(selector, submit, validations, masks);
+  const form = new ValidateForm(selector, submit, callbackFunction , validations, masks);
   form.init();
 };
