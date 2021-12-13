@@ -1,4 +1,4 @@
-# basicv2 - 0.3.0
+# basicv2 - 0.4.0
 Basic é um framework muito simples em Javascript e SCSS criado para facilitar a criação de front-end para websites. O objetivo é entregar funcionalidades que são recorrentes na criação de sites com mínimo de CSS possível, para que a customização possa ser fácil e livre.
 
 O Basic é divido em módulos, e abaixo consta a documentação de como utilizar cada um deles...
@@ -430,7 +430,7 @@ O módulo de formulário, adiciona diversas funcionalidades formulários: como v
 Para inicializar o módulo, é necessário importa-lo separamente: 
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/form.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/form.js"></script>
 ```
 
 Iniciando um formulário.
@@ -489,11 +489,22 @@ Mascaras disponíveis:
 | CNPJ | data-mask="cnpj" |
 | Inteiros | data-mask="inteiros" |
 
+Função de Callback no formulário (Sobrescrevendo a função de envio original):
+```html
+<script>
+(function() {
+  basicForm('#formExemplo', function(e){
+    console.log('Hello world');
+  });
+})();
+</script>  
+```
+
 Adicionando novas mascaras ao formulário:
 ```html
 <script>
 (function() {
-  basicForm('#formExemplo', {
+  basicForm('#formExemplo', false, {
     masks: [
       mascaraExemplo: {
         expressions: [
@@ -537,11 +548,12 @@ Validações disponíveis:
 | Email | data-regex="email" |
 | Cep | data-regex="cep" |
 
+#Função
 Adicionando novas validações ao formulário:
 ```html
 <script>
 (function() {
-  basicForm('#formExemplo', {
+  basicForm('#formExemplo', false, {
     validations: [
       validacaoExemplo: {
         regex:
