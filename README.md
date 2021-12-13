@@ -493,7 +493,7 @@ Mascaras disponíveis:
 ```html
 <script>
 (function() {
-  basicForm('#formExemplo', function(e){
+  basicForm('#formExemplo', function(){
     console.log('Hello world');
   });
 })();
