@@ -489,7 +489,7 @@ Mascaras disponíveis:
 | CNPJ | data-mask="cnpj" |
 | Inteiros | data-mask="inteiros" |
 
-Função de Callback no formulário (Sobrescrevendo a função de envio original):
+### Função de Callback no formulário (Sobrescrevendo a função de envio original):
 ```html
 <script>
 (function() {
@@ -500,7 +500,7 @@ Função de Callback no formulário (Sobrescrevendo a função de envio original
 </script>  
 ```
 
-Adicionando novas mascaras ao formulário:
+### Adicionando novas mascaras ao formulário:
 ```html
 <script>
 (function() {
@@ -533,7 +533,7 @@ Adicionando novas mascaras ao formulário:
 </script>  
 ```
 
-Aplicando validação de regex com o atributo `data-regex`:
+### Aplicando validação de regex com o atributo `data-regex`:
 ```html
 <label>
       <input type="text" name="telefone" id="telefone" data-form"field" data-regex="telefone" required />
@@ -548,8 +548,7 @@ Validações disponíveis:
 | Email | data-regex="email" |
 | Cep | data-regex="cep" |
 
-#Função
-Adicionando novas validações ao formulário:
+### Adicionando novas validações ao formulário:
 ```html
 <script>
 (function() {
@@ -628,7 +627,7 @@ Utilização básica:
 <p class="error"></p>  
 ```
 
-Mínimo e Máximo:
+### Mínimo e Máximo:
 ```html
 <div data-form="group" min="1" max="2">
   <label>
