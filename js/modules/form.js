@@ -141,7 +141,7 @@ class ValidateForm {
 
   toggleError(check, field) {
     const identifier = field.getAttribute("id");
-    const error = document.querySelector(`#${identifier} ~ .error`);
+    const error = this.form.querySelector(`#${identifier} ~ .error`);
 
     if (check.status === true) {
       if (!error.classList.contains(this.activeClass)) {
@@ -347,6 +347,7 @@ class ValidateForm {
           submit.innerHTML = html;
         }
       } else if (this.callback){
+        event.preventDefault();
         this.callback();
       }
     } else {
@@ -474,6 +475,6 @@ window.basicForm = (selector, callback, options) => {
     callbackFunction = false;
   }
 
-  const form = new ValidateForm(selector, submit, callbackFunction , validations, masks);
+  const form = new ValidateForm(selector, submit, callbackFunction, validations, masks);
   form.init();
 };
