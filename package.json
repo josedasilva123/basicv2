@@ -19,9 +19,9 @@
   "homepage": "https://github.com/josedasilva123/basic#readme",
   "description": "",
   "devDependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
-    "@babel/preset-env": "^7.13.10",
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.10",
+    "@babel/preset-env": "^7.16.11",
     "css-loader": "^5.2.6",
     "mini-css-extract-plugin": "^2.0.0",
     "sass": "^1.35.1",
