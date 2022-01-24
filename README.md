@@ -504,7 +504,7 @@ Mascaras disponíveis:
 ```
 
 Validações disponíveis:
-| Mascará | Atributo |
+| Validação | Atributo |
 | ------ | ------ |
 | Telefone | data-regex="telefone" |
 | Email | data-regex="email" |
