@@ -9,6 +9,10 @@ Você pode ativar o Basic em seu projeto via CDN (com todos os módulos ativos)
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.css" />
 ```
+**Head (Sem reset.css)** para projetos que já tenham um reset próprio
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic-noreset.css" />
+```
 **Body (Final)**
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.js"></script>
