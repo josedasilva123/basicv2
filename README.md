@@ -1,6 +1,23 @@
 # basicv2 - 0.4.0
 Basic é um framework muito simples em Javascript e SCSS criado para facilitar a criação de front-end para websites. O objetivo é entregar funcionalidades que são recorrentes na criação de sites com mínimo de CSS possível, para que a customização possa ser fácil e livre.
 
+## Como instalar
+
+Você pode ativar o Basic em seu projeto via CDN (com todos os módulos ativos)
+
+**Head**
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.css" />
+```
+**Body (Final)**
+```html
+<script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.js"></script>
+```
+
+Ou basta utilizar a os arquivos da pasta /public deste repositório.
+
+## Módulos Basic
+
 O Basic é divido em módulos, e abaixo consta a documentação de como utilizar cada um deles...
 
 ##### Lista de Módulos
@@ -17,16 +34,7 @@ O Basic é divido em módulos, e abaixo consta a documentação de como utilizar
 **Módulos CSS**
 - [colapse](#colapse)
 
-Você pode ativar o Basic em seu projeto via CDN (com todos os módulos ativos)
 
-**Head**
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.css" />
-```
-**Body (Final)**
-```html
-<script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.js"></script>
-```
 ## fixedOnScroll
 
 Este módulo fixa o elementos quando a rolagem atinge um deterninado valor.
