@@ -31,14 +31,6 @@ Você pode ativar o Basic em seu projeto via CDN (com todos os módulos ativos)
 
 Este módulo fixa o elementos quando a rolagem atinge um deterninado valor.
 
-Iniciando (em index.js):
-```js
-import FixedOnScroll from './modules/fixedOnScroll.js';
-
-const fixedScroll = new FixedOnScroll();
-fixedScroll.init();
-```
-
 Opções:
 
 | Opção | Valor Padrão | Como usar |
@@ -62,14 +54,6 @@ Attributos CSS Padrão:
 ## scrollAnimation
 
 Este módulo faz com que animações aconteçam ao atingir um valor relativo de rolagem.
-
-Iniciando (em index.js):
-```js
-import ScrollAnimation from './modules/scrollAnimation.js';
-
-const scrollAnimation = new ScrollAnimation();
-scrollAnimation.init();
-```
 
 Aplicação em HTML:
 ```html
@@ -153,14 +137,6 @@ Classes CSS Padrão:
 
 Este módulo auxilia a criação de abas.
 
-Iniciando (em index.js):
-```js
-import Tabs from './modules/tabs.js';
-
-const tabs = new Tabs();
-tabs.init();
-```
-
 Aplicação em HTML:
 
 ```html
@@ -208,13 +184,6 @@ Aplicação em HTML:
 
 Este módulo auxilia a criação de botões para exibirem ou fecharem outros elementos. Ideal para menus mobiles, carrinhos, dropdowns ativos via click, entre outros...
 
-Iniciando (em index.js):
-```js
-import ToggleButton from './modules/toggleButton.js';
-
-const toggle = new ToggleButton();
-toggle.init();
-```
 Aplicação em HTML:
 
 ### **Menu Mobile Básico**
@@ -268,17 +237,6 @@ Aplicação em HTML:
 
 ### **Uso simplificado**
 
-```html
-<div>
-  <div class="b-menu-toggle b-mobile ativo" data-toggle="exemplo"> 
-    Abre Elemento
-  </div>      
-</div>
-<div data-element="exemplo"> 
-  Elemento
-</div>
-```
-
 Atributos Especiais:
 | Atributo | Descrição |
 | ------ | ------ |
@@ -307,13 +265,6 @@ Classes CSS Padrão:
 
 Este módulo adiciona comportamentos especiais ao menu, como identificar página ativa com base em `pathname` e outras especificidades para menu mobile.
 
-Iniciando (em index.js):
-```js
-import Menu from './modules/menu.js';
-
-const menu = new Menu();
-menu.init();
-```
 ### **Comportamento básico: identificar página ativa**
 
 ```html
@@ -434,7 +385,6 @@ Para inicializar o módulo, é necessário importa-lo separamente:
 ```
 
 Iniciando um formulário.
-
 
 ### Formulário Simples
 ```html
