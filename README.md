@@ -1,4 +1,4 @@
-# basicv2 - 0.4.0
+# basicv2 - 0.5.0
 Basic é um framework muito simples em Javascript e SCSS criado para facilitar a criação de front-end para websites. O objetivo é entregar funcionalidades que são recorrentes na criação de sites com mínimo de CSS possível, para que a customização possa ser fácil e livre.
 
 ## Como instalar
