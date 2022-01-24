@@ -431,7 +431,7 @@ Aplicando máscara em um campo com o atributo `data-mask`:
 ```
 
 Mascaras disponíveis:
-| Mascará | Atributo |
+| Máscara | Atributo |
 | ------ | ------ |
 | Telefone | data-mask="telefone" |
 | Cep | data-mask="cep" |
