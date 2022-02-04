@@ -88,7 +88,7 @@ Animações Disponíveis:
 
 ## modal
 
-Este modulo auxilia a criação de modais chamados por padrão por evento de click via botão.
+Este módulo auxilia a criação de modais chamados por padrão por evento de click via botão.
 
 Aplicação em HTML:
 
@@ -134,7 +134,7 @@ Classes CSS Padrão:
 
 | Classes | Descrição |
 | ------ | ------ |
-| b-modal | Fixa o modal na tela, é grade invisível em que o modal fica. Usa por padrão `position: fixed, width: 100%, height: 100% e z-index: 1001`, com `display: flex` para posicionar o conteúdo interno |
+| b-modal | Fixa o modal na tela, é a "grade invisível" em que o modal fica. Usa por padrão `position: fixed, width: 100%, height: 100% e z-index: 1001`, com `display: flex` para posicionar o conteúdo interno |
 | b-modal-overlay | É o overlay do modal, por padrão não tem cor, mas existe para, em caso de clique, o modal fechar |
 | b-modal-content | É a caixa do modal propriamente dita
 
