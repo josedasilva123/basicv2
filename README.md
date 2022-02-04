@@ -381,7 +381,7 @@ CSS simples para criação de acordeons e sanfonas.
 ```
 ## formulário
 
-O módulo de formulário, adiciona diversas funcionalidades formulários: como validação de campos por regular expression, mascaras, a possibilidade da criação de formulários com etapas, entre outras.
+O módulo de formulário adiciona diversas funcionalidades formulários, como: validação de campos por regular expression, máscaras, possibilidade da criação de formulários com etapas, entre outras.
 
 Para inicializar o módulo, é necessário importa-lo separamente: 
 
