@@ -90,13 +90,6 @@ Animações Disponíveis:
 
 Este modulo auxilia a criação de modais chamados por padrão por evento de click via botão.
 
-Iniciando (em index.js):
-```js
-import Modal from './modules/modal.js';
-
-const modal = new Modal();
-modal.init();
-```
 Aplicação em HTML:
 
 ### **Modal básico**
