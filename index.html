@@ -71,6 +71,58 @@
   .abasExemplo .menu li.ativo{
     color: blue;
   }
+  html {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .dropzone{
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    min-height: 180px;
+  }
+  .boards{
+    display: flex;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+  .boards .board{
+    width: 30%;
+  }
+  .boards .board h3{
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .boards .board .card{
+    background: #fbfbfb;
+    padding: 1rem;
+    min-height: 140px;
+    border-radius: 8px;
+    margin-top: 2rem;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.08);
+  }
+  .boards .board .card .status{
+    width: 45px;
+    height: 8px;
+    border-radius: 25px;
+    background-color: rgb(189, 189, 255);
+    margin-bottom: 1rem;
+  }
+  .boards .board .card .status.blue{
+    background-color: rgb(189, 189, 255);
+  }
+  .boards .board .card .status.green{
+    background-color: rgb(150, 236, 154);
+  }
+  .boards .board .card .status.red{
+    background-color: rgb(241, 184, 184);
+  }
+  .highlight {
+    background: #fbfbfb;
+  }
+  .dragging{
+    cursor: move;
+    opacity: .3;
+  }
   </style>  
   <body> 
     <!-- toogleButton: Menu -->
@@ -150,11 +202,41 @@
         <button data-tab-prev="minhasAbas">Anterior</button>
         <button data-tab-next="minhasAbas">Próximo</button>
       </div>
-    </div>    
-    
+    </div>        
     <div style="height: 200vh"></div>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/basic.js"></script>
+    <div class="b-container">
+      <div class="boards" data-dropzone="board" data-dragdirection="X">
+        <div class="board" draggable="true" data-draggableelement="board" >
+          <h3>Todo</h3>
+          <div class="dropzone green" data-dropzone="teste">
+            <div class="card" draggable="true" data-draggableelement="teste">
+              <div class="status blue"></div>
+              <div class="content">Do vídeos</div>
+            </div>
+          </div>
+        </div> 
+        <div class="board" draggable="true" data-draggableelement="board"> 
+          <h3>In Progress</h3>
+          <div class="dropzone" data-dropzone="teste">
+            <div class="card" draggable="true" data-draggableelement="teste">
+              <div class="status green"></div>
+              <div class="content">Do script</div>
+            </div>
+          </div>
+        </div>   
+        <div class="board" draggable="true" data-draggableelement="board">
+          <h3>Done</h3>
+          <div class="dropzone green" data-dropzone="teste2">
+            <div class="card" draggable="true" data-draggableelement="teste2"> 
+              <div class="status red"></div>
+              <div class="content">Do Vídeos</div>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+    <script type="module" src="/public/basic.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/form.js"></script>
-    </script>
+
   </body>
 </html>

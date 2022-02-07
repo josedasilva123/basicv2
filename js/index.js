@@ -4,8 +4,9 @@ import ToggleButton from './modules/toggleButton.js';
 import Modal from './modules/modal.js';
 import ScrollAnimation from './modules/scrollAnimation.js';
 import Menu from './modules/menu.js';
+import DragAndDropList from './modules/dragAndDropList.js';
 
-import '../css/basic.scss';
+
 
 const tabs = new Tabs();
 tabs.init();
@@ -24,4 +25,7 @@ scrollAnimation.init();
 
 const menu = new Menu();
 menu.init();
+
+const draganddrop = new DragAndDropList();
+draganddrop.init();
 
