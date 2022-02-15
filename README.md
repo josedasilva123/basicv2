@@ -34,6 +34,7 @@ O Basic é divido em módulos, e abaixo consta a documentação de como utilizar
 - [toggleButton](#togglebutton)
 - [menu](#menu)
 - [formulário](#formulário)
+- [colapseJS](#colapseJS)
 
 **Módulos CSS**
 - [colapse](#colapse)
@@ -352,18 +353,18 @@ Colapse com JS, aplicando classe ativo na label(botão ativador) e no conteúdo.
 
 ** Exemplo com classes do Basic (Singular) **
 ```html
-<label class="b-colapse-label" data-colapseJS="label">Item 1</label>
-<div class="b-colapse-content">Conteúdo 1</div>
-<label class="b-colapse-label" data-colapseJS="label">Item 2</label>
-<div class="b-colapse-content">>Conteúdo 2</div>
+<label class="b-colapse-label" data-colapsejs="label">Item 1</label>
+<div class="b-colapse-content" data-colapsejs="box" data-animation="fadeIn">Conteúdo 1</div>
+<label class="b-colapse-label" data-colapsejs="label">Item 2</label>
+<div class="b-colapse-content" data-colapsejs="box" data-animation="fadeIn">Conteúdo 2</div>
 ```
 
 ** Exemplo com classes do Basic (Grupo) ** quando um é ativo, desativa os outros.
 ```html
-<label class="b-colapse-label" data-colapseJS="label" data-colapsegroup="exemplo1">Item 1</label>
-<div class="b-colapse-content">Conteúdo 1</div>
-<label class="b-colapse-label" data-colapseJS="label" data-colapsegroup="exemplo1">Item 2</label>
-<div class="b-colapse-content">>Conteúdo 2</div>
+<label class="b-colapse-label" data-colapsejs="label" data-colapsegroup="exemplo1">Item 1</label>
+<div class="b-colapse-content" data-colapsejs="box" data-animation="fadeIn">Conteúdo 1</div>
+<label class="b-colapse-label" data-colapsejs="label" data-colapsegroup="exemplo1">Item 2</label>
+<div class="b-colapse-content" data-colapsejs="box" data-animation="fadeIn">Conteúdo 2</div>
 ```
 
 | Classes | Descrição |
