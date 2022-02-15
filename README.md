@@ -370,7 +370,7 @@ Colapse com JS, aplicando classe ativo na label(botão ativador) e no conteúdo.
 | Classes | Descrição |
 | ------ | ------ |
 | b-colapse-label | Classe com `cursor: pointer` |
-| b-colapse-content | Classe com display: none` no estado inativo e `display: block` no estado ativo. |
+| b-colapse-content | Classe com `display: none` no estado inativo e `display: block` no estado ativo. |
 
 ***Além dos módulos em JS, o Basic tem disponível um conjunto de modulos CSS para funcionalidades mais simples, segue a lista e instruções de uso abaixo:***
 
