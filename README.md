@@ -346,6 +346,30 @@ Atributos Especiais:
 </nav> 
 ```
 
+## colapseJS
+
+Colapse com JS, aplicando classe ativo na label(botão ativador) e no conteúdo.
+
+** Exemplo com classes do Basic (Singular) **
+```html
+<label class="b-colapse-label" data-colapseJS="label">Item 1</label>
+<div class="b-colapse-content">Conteúdo 1</div>
+<label class="b-colapse-label" data-colapseJS="label">Item 2</label>
+<div class="b-colapse-content">>Conteúdo 2</div>
+```
+
+** Exemplo com classes do Basic (Grupo) ** quando um é ativo, desativa os outros.
+```html
+<label class="b-colapse-label" data-colapseJS="label" data-colapsegroup="exemplo1">Item 1</label>
+<div class="b-colapse-content">Conteúdo 1</div>
+<label class="b-colapse-label" data-colapseJS="label" data-colapsegroup="exemplo1">Item 2</label>
+<div class="b-colapse-content">>Conteúdo 2</div>
+```
+
+| Classes | Descrição |
+| ------ | ------ |
+| b-colapse-label | Classe com `cursor: pointer` |
+| b-colapse-content | Classe com display: none` no estado inativo e `display: block` no estado ativo. |
 
 ***Além dos módulos em JS, o Basic tem disponível um conjunto de modulos CSS para funcionalidades mais simples, segue a lista e instruções de uso abaixo:***
 
