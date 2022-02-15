@@ -5,6 +5,7 @@ export default class Colapse{
     }
 
     handleClick({currentTarget}){
+        console.log(currentTarget);
         const box = currentTarget.nextElementSibling;
         const group = currentTarget.getAttribute('data-colapsegroup');
         if(group){
@@ -35,9 +36,11 @@ export default class Colapse{
     addEvents(){
         if(this.labels){
             this.labels.forEach(label => {
-                label.addEventListener('click', handleClick)
+                label.addEventListener('click', this.handleClick);
             })
         }
+        console.log(this.labels);
+        console.log('adicionando eventos');
     }
 
     init(){
