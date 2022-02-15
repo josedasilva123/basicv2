@@ -1,8 +1,13 @@
 $max-height: 1080px;
 
-.colapse-label{
-    display: block;
+.b-colapse-label{
     cursor: pointer;
+}
+.b-colapse-content{
+    display: none;
+}
+.b-colapse-content.ativo{
+    display: block;
 }
 [data-colapse]{
     cursor: pointer;
