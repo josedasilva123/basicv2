@@ -23,7 +23,7 @@ export default class Colapse{
                 currentTarget.classList.add(this.activeClass);
                 box.classList.add(this.activeClass);
             } else {
-                currentTarget.classList.remove(this.active);
+                currentTarget.classList.remove(this.activeClass);
                 box.classList.remove(this.activeClass);
             }
         }
@@ -39,8 +39,6 @@ export default class Colapse{
                 label.addEventListener('click', this.handleClick);
             })
         }
-        console.log(this.labels);
-        console.log('adicionando eventos');
     }
 
     init(){
