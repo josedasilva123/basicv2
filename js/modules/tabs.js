@@ -72,9 +72,12 @@ export default class Tabs {
     
     menu.setAttribute('data-index', 0);
 
-    items[0].classList.add(this.activeClass);
-    content[0].classList.add(this.activeClass);
-
+    if(items){
+      items[0].classList.add(this.activeClass);
+    }
+    if(content){
+      content[0].classList.add(this.activeClass);
+    }
 
     if (menu.hasAttribute("data-autoplay")) {  
       this.autoPlay(items, content, menu, previous, next);
