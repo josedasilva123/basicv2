@@ -8,8 +8,6 @@ import Menu from './modules/menu.js';
 import DragAndDropList from './modules/dragAndDropList.js';
 import Colapse from './modules/colapse.js'
 
-
-
 const tabs = new Tabs();
 tabs.init();
 
