@@ -633,7 +633,7 @@ Utilização básica:
 
 Com o dragAndDrop, é possível criar grupos de elementos arrasta e solta, que pode ser movidos de `dropzone` para `dropzone`, além de reordenados.
 
-###Exemplo KanbanTem 
+### Exemplo Kanban
 ```html
 <div class="boards" data-dropzone="board" data-dragdirection="X">
   <div class="board" draggable="true" data-draggableelement="board" >
