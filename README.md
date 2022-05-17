@@ -35,6 +35,7 @@ O Basic é divido em módulos, e abaixo consta a documentação de como utilizar
 - [menu](#menu)
 - [formulário](#formulário)
 - [colapseJS](#colapseJS)
+- [dragAndDrop](#dragAndDrop)
 
 **Módulos CSS**
 - [colapse](#colapse)
@@ -628,5 +629,52 @@ Utilização básica:
 
 ***No caso dos checkbox, o basic tem automaticamente como padrão o min=1 e o max=undefined***
 
+## dragAndDrop
+
+Com o basic é possível criar grupos de dragAndDrop (que permitem o reordenamento e troca de itens entre si)
+
+```html
+<div class="boards" data-dropzone="board" data-dragdirection="X">
+  <div class="board" draggable="true" data-draggableelement="board" >
+    <h3>Todo</h3>
+    <div class="dropzone green" data-dropzone="teste">
+      <div class="card" draggable="true" data-draggableelement="teste">
+        <div class="status blue"></div>
+      <div class="content">Do vídeos</div>
+    </div>
+  </div>
+</div> 
+  
+<div class="board" draggable="true" data-draggableelement="board"> 
+  <h3>In Progress</h3>
+  <div class="dropzone" data-dropzone="teste">
+    <div class="card" draggable="true" data-draggableelement="teste">
+      <div class="status green"></div>
+        <div class="content">Do script</div>
+      </div>
+    </div>
+</div>   
+  
+<div class="board" draggable="true" data-draggableelement="board">
+  <h3>Done</h3>
+  <div class="dropzone green" data-dropzone="teste">
+    <div class="card" draggable="true" data-draggableelement="teste"> 
+      <div class="status red"></div>
+        <div class="content">Do Vídeos</div>
+      </div>
+    </div>
+  </div>        
+</div>
+```
+
+| Atributos | Descrição |
+| ------ | ------ | 
+| draggable | Propriedade necessária para os elementos que podem ser arrastados  |
+| data-dragdirection | Pode ser `X` ou `Y` (Por default, o valor é Y) |
+| data-dropzone | Esse atributo determina o identificador da dropzone, o atributo `data-draggableelement` dos itens internos deve corresponder a este identificador |
+| data-draggableelement | Esse atributo precisa corresponder ao mesmo valor atributo `data-dropzone` **(nas zonas de drop)**, trata-se do identificador de elementos |
+
+
 ------------
+
 **This is basic!**
