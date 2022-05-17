@@ -631,8 +631,9 @@ Utilização básica:
 
 ## dragAndDrop
 
-Com o basic é possível criar grupos de dragAndDrop (que permitem o reordenamento e troca de itens entre si)
+Com o dragAndDrop, é possível criar grupos de elementos arrasta e solta, que pode ser movidos de `dropzone` para `dropzone`, além de reordenados.
 
+###Exemplo KanbanTem 
 ```html
 <div class="boards" data-dropzone="board" data-dragdirection="X">
   <div class="board" draggable="true" data-draggableelement="board" >
