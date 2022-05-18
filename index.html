@@ -235,11 +235,39 @@
         </div>        
       </div>
     </div>
+    <form id="testeForm">
+      <div data-step>
+        <div data-form="group" style="display: flex; flex-direction: column;" min="1">
+          <label>
+              Opção A
+              <input type="checkbox" name="opcao" id="opcaoA">
+          </label>  
+           <label>
+              Opção B
+              <input type="checkbox" name="opcao" id="opcaoB">
+          </label> 
+           <label>
+              Opção C
+              <input type="checkbox" name="opcao" id="opcaoC">
+          </label> 
+        </div>
+        <p class="error"></p>
+        <button data-stepNext>Enviar</button>
+      </div>
+      
+    </form>
+   
+    <p class="error"></p>  
     <label class="b-colapse-label" data-colapsejs="label" data-colapsegroup="exemplo1">Item 1</label>
 <div class="b-colapse-content" data-colapsejs="box">Conteúdo 1</div>
 <label class="b-colapse-label" data-colapsejs="label" data-colapsegroup="exemplo1">Item 2</label>
 <div class="b-colapse-content" data-colapsejs="box">Conteúdo 2</div>
     <script type="module" src="/public/basic.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/josedasilva123/basicv2@main/public/form.js"></script>
+    <script  src="/js/modules/form.js"></script>
+    <script>
+      (function() {
+        basicForm('#testeForm');
+      })();
+    </script>
   </body>
 </html>
