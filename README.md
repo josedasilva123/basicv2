@@ -97,7 +97,7 @@ Aplicação em HTML:
 ### **Modal básico**
 
 ```html
-<button data-modal="exemplo" data-openModal>Abre Modal</button>
+<button class="ativo" data-modal="exemplo" data-openModal>Abre Modal</button>
 <div data-element="exemplo" class="b-modal">
     <div class="b-modal-content">
       <button data-modal="exemplo" data-closeModal>Fechar</button>
@@ -319,8 +319,8 @@ Este módulo adiciona comportamentos especiais ao menu, como identificar página
 Atributos Especiais:
 | Atributo | Descrição |
 | ------ | ------ |
-| data-menu="landing"| Com esta opção de atributo, o menu mobile é fechado ao se clicarem nos links (excelente opção para landing page) |
-> O atributo "landing" precisa no módulo `toggleButton` para funcionar, tendo em vista que é através dele que são criados os menus mobile.
+| data-landing | Com esta opção de atributo, o menu mobile é fechado ao se clicarem nos links (excelente opção para landing page) |
+> O atributo "landing" precisa do módulo `toggleButton` para funcionar, tendo em vista que é através dele que são criados os menus mobile.
 
 ### **Exemplo: identificar página ativa + landing**
 
@@ -334,15 +334,15 @@ Atributos Especiais:
       Fecha Menu
     </div> 
   </div>   
-  <ul class="b-menu" data-element="exemplo" data-animation="fadeIn" data-menu="exemplo">
+  <ul class="b-menu" data-element="exemplo" data-animation="fadeIn" data-menu="exemplo" data-landing>
     <li>
-      <a href="/" data-menu-link>Item 1</a>             
+      <a href="#sobre" data-menu-link>Item 1</a>             
     </li>
     <li>
-      <a href="/exemplo1" data-menu-link>Item 2</a>             
+      <a href="#depoimentos" data-menu-link>Item 2</a>             
     </li>
     <li>
-      <a href="/exemplo2" data-menu-link>Item 3</a>             
+      <a href="#contato" data-menu-link>Item 3</a>             
     </li>
   </ul>    
 </nav> 
@@ -360,7 +360,7 @@ Colapse com JS, aplicando classe ativo na label(botão ativador) e no conteúdo.
 <div class="b-colapse-content" data-colapsejs="box" data-animation="fadeIn">Conteúdo 2</div>
 ```
 
-** Exemplo com classes do Basic (Grupo) ** quando um é ativo, desativa os outros.
+** Exemplo com classes do Basic (Grupo) **: quando um é ativo, desativa os outros.
 ```html
 <label class="b-colapse-label" data-colapsejs="label" data-colapsegroup="exemplo1">Item 1</label>
 <div class="b-colapse-content" data-colapsejs="box" data-animation="fadeIn">Conteúdo 1</div>
@@ -407,7 +407,7 @@ CSS simples para criação de acordeons e sanfonas.
 ```
 ## formulário
 
-O módulo de formulário adiciona diversas funcionalidades formulários, como: validação de campos por regular expression, máscaras, possibilidade da criação de formulários com etapas, entre outras.
+O módulo de formulário adiciona diversas funcionalidades aos formulários, como: validação de campos por regular expression, máscaras, possibilidade da criação de formulários com etapas, entre outras.
 
 Para inicializar o módulo, é necessário importa-lo separamente: 
 
