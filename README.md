@@ -35,7 +35,7 @@ O Basic é divido em módulos, e abaixo consta a documentação de como utilizar
 - [menu](#menu)
 - [formulário](#formulário)
 - [colapseJS](#colapseJS)
-- [dragAndDrop](#dragAndDrop)
+- [dragAndDrop](#draganddrop)
 
 **Módulos CSS**
 - [colapse](#colapse)
