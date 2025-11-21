@@ -674,102 +674,67 @@ Com o dragAndDrop, é possível criar grupos de elementos arrasta e solta, que p
 
 ## stickyBackground
 
-O módulo `stickyBackground` permite criar efeitos em que o fundo (ou um elemento de fundo) permanece "fixo" ou se comporta de forma "grudada" em relação à área visível enquanto o usuário rola a página — útil para banners, seções com background parallax simples ou efeitos visuais onde o conteúdo parece deslizar sobre um plano de fundo fixo.
+O módulo `stickyBackground` permite aplicar um efeito de paralax suave ao fundo de um elemento.
 
-Principais características:
-- Mantém um elemento de fundo fixo dentro de um container enquanto o conteúdo interno rola.
-- Suporta offset configurável (distância do topo/bottom antes de iniciar o comportamento).
-- Pode ser limitado a um container específico para não ultrapassar seus limites.
-
-Como usar (HTML):
+Uso (HTML):
 ```html
-<section class="hero" data-sticky-background data-sticky-offset="0" data-sticky-container="#sectionContainer">
-  <div class="hero-bg" data-sticky-bg>
-    <!-- imagem ou conteúdo de fundo -->
-  </div>
-  <div class="hero-content">
+<style>
+section{
+  background-image: url("/background.img");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+</style>  
+
+<section data-stickyBackground>
+  <div class="content">
     <h1>Título</h1>
     <p>Conteúdo que rola sobre o fundo fixo.</p>
   </div>
 </section>
 ```
 
-Atributos disponíveis:
-| Atributo | Descrição |
-| ------ | ------ |
-| `data-sticky-background` | Ativa o comportamento sticky neste bloco (aplicado no container pai). |
-| `data-sticky-bg` | Marca o elemento que deve se comportar como fundo fixo. |
-| `data-sticky-offset` | Offset em pixels antes do sticky entrar em ação (ex.: `50`). Padrão: `0`. |
-| `data-sticky-container` | Se informado com um seletor (ex.: `#meuContainer`), limita o efeito ao container especificado. |
-| `data-sticky-disable-below` | Desativa o comportamento abaixo de uma largura de viewport (em pixels). Útil para mobile. |
-
-Classes/CSS úteis (padrão Basic):
-- `b-sticky-bg`: classe base para o elemento de fundo (pode conter `position: absolute` / `cover`).
-- `b-sticky-active`: aplicada quando o comportamento sticky está ativo (útil para transições).
-
-Exemplo CSS mínimo:
-```css
-.hero { position: relative; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-.b-sticky-active { transform: translateY(0); transition: transform .3s ease; }
-.hero-content { position: relative; z-index: 1; }
-```
-
-Inicialização:
-- Se você estiver usando o bundle `public/basic.js`, o módulo pode ser inicializado automaticamente junto aos demais módulos. Caso precise inicializar manualmente, importe e chame a função de inicialização correspondente (consulte o arquivo do módulo em `js/modules` para o nome exato da função / classe).
-
-Boas práticas:
-- Defina `data-sticky-disable-below` para evitar efeitos pesados em dispositivos móveis.
-- Use `data-sticky-container` para que o fundo não ultrapasse o limite visual desejado.
-- Combine com `background-size: cover` para obter melhores resultados em imagens responsivas.
-
-
-**This is basic!**
-
 ## videoScroll
 
 O módulo `videoScroll` sincroniza a reprodução de um elemento `<video>` com a posição de rolagem da página. À medida que o usuário rola, o código atualiza `video.currentTime` mapeando a posição do scroll para a duração do vídeo — útil para seções onde o vídeo funciona como uma linha do tempo controlada pelo scroll.
 
-Comportamento observado em `js/modules/videoScroll.js`:
-- Seleciona elementos com o seletor `[data-videoScroll]` (atenção à caixa: `data-videoScroll`).
-- Busca o `<video>` interno via `element.querySelector('video')` — portanto o vídeo deve estar dentro do container marcado.
-- Aguarda `loadedmetadata` do vídeo para configurar os pontos de início/fim.
-- Recalcula pontos em `resize`.
-- Define `start = element.offsetTop + window.innerHeight * 0.2` e `end = element.offsetTop + sectionHeight - window.innerHeight`.
-- Calcula `progress = (scrollY - start) / (end - start)` (clamp 0..1) e atualiza `video.currentTime = progress * video.duration` quando `video.duration` estiver disponível.
-
 Uso (HTML):
 ```html
+<style>
+section{
+  position: relative;
+  height: 500vh;
+}
+
+video{
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+</style>  
 <section class="video-section" data-videoScroll>
-  <video src="/media/scroll.mp4" preload="metadata" muted playsinline></video>
-  <div class="video-overlay">
-    <!-- Conteúdo sobreposto ao vídeo -->
-  </div>
+  <video src="/video.mp4" preload="metadata" muted playsinline></video>
 </section>
 ```
 
-Exemplo CSS recomendado:
-```css
-.video-section { position: relative; height: 100vh; min-height: 400px; overflow: hidden; }
-.video-section video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.video-overlay { position: relative; z-index: 1; }
+## stickyContent
+
+O módulo `stickyContent` existe para criar um efeito de parallax suave onde uma seção se esconder atrás da outra.
+
+```html
+<section data-stickySection="exemplo">
+  Seção 1
+</section>
+<section data-stickyNextSection="exemplo">
+  Seção 2
+</section>  
 ```
 
-Inicialização (JS):
-```js
-import VideoScroll from './js/modules/videoScroll.js';
+| Atributos | Descrição |
+| ------ | ------ | 
+| data-stickySectionStart | Número de 0 a 1 que define o inicio do comportamento com base na visibilidade da próxima seção (ex: 0.1 (10%))  |
+| data-stickySectionEnd | Número de 0 a 1 que define o término do comportamento com base na visibilidade da próxima seção (ex: 0.1 (10%)) |
 
-const vs = new VideoScroll();
-vs.init();
-```
-
-Observações e boas práticas:
-- O módulo controla `video.currentTime` diretamente; não é necessário chamar `play()` — o vídeo deve ter `preload` e normalmente `muted`/`playsinline` para compatibilidade e comportamento previsível em navegadores móveis.
-- Se o container for muito curto ou tiver a mesma altura da viewport, o cálculo `end - start` pode ficar muito pequeno — verifique o tamanho da seção para evitar saltos ou divisão por zero.
-- O módulo adiciona listeners de `scroll` e `resize` por elemento; em páginas com muitos vídeos, considere unificar listeners e aplicar um cálculo centralizado para melhorar performance.
-- O ponto de início é `element.offsetTop + 20% da altura da janela` e o fim é `element.offsetTop + sectionHeight - window.innerHeight` — isto significa que o controle começa quando a seção entra parcialmente na viewport e termina quando a seção sai da vista.
-
-Possíveis melhorias:
-- Adicionar proteção contra `range === 0` para evitar divisão por zero.
-- Permitir configurar `start`/`end` via atributos (`data-start-offset`, `data-end-offset`) e adicionar `data-disable-below` para desativar em dispositivos móveis.
-
+**This is basic!**
