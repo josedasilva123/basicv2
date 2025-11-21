@@ -5,7 +5,6 @@ export default class Colapse{
     }
 
     handleClick({currentTarget}){
-        console.log(currentTarget);
         const box = currentTarget.nextElementSibling;
         const group = currentTarget.getAttribute('data-colapsegroup');
         if(group){

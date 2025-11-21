@@ -111,7 +111,6 @@ export default class DragAndDropList {
   }
 
   addEvents() {
-    console.log(this.draggableElements);
     this.draggableElements.forEach((element) => {
       element.addEventListener("dragstart", this.dragStart);
       element.addEventListener("dragend", this.dragEnd);

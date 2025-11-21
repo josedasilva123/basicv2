@@ -22,8 +22,6 @@ export default class Tabs {
     } else {
       index = currentIndex - 1;
     }
-    console.log(index);  
-    console.log(currentIndex);
 
     this.selectItem(menu, items, content, index);
   }

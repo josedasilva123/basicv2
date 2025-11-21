@@ -7,6 +7,9 @@ import ScrollAnimation from './modules/scrollAnimation.js';
 import Menu from './modules/menu.js';
 import DragAndDropList from './modules/dragAndDropList.js';
 import Colapse from './modules/colapse.js'
+import StickyBackground from './modules/stickyBackground.js';
+import VideoScroll from './modules/videoScroll.js';
+import StickyContent from './modules/stickyContent.js';
 
 const tabs = new Tabs();
 tabs.init();
@@ -32,3 +35,11 @@ draganddrop.init();
 const colapse = new Colapse();
 colapse.init();
 
+const stickyBackground = new StickyBackground();
+stickyBackground.init();
+
+const videoScroll = new VideoScroll();
+videoScroll.init();
+
+const stickyContent = new StickyContent();
+stickyContent.init();
