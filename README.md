@@ -67,7 +67,7 @@ sticky.init();
 
 Se quiser, posso:
 - ajustar o módulo para aceitar atributos como `data-sticky-offset` ou `data-sticky-disable-below` (e atualizar a doc novamente);
-```
+
 Animações Disponíveis:
 
 | ------ | ------ |
