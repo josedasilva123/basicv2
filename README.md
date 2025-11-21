@@ -31,6 +31,14 @@ O Basic é divido em módulos, e abaixo consta a documentação de como utilizar
 - [scrollAnimation](#scrollanimation)
 - [modal](#modal)
 - [tabs](#tabs)
+- [toggleButton](#togglebutton)
+- [menu](#menu)
+- [formulário](#formulário)
+- [colapseJS](#colapsejs)
+- [dragAndDrop](#draganddrop)
+- [stickyBackground](#stickybackground)
+- [stickyContent](#stickycontent)
+- [videoScroll](#videoscroll)
 
 O módulo `stickyBackground` aplica um efeito de parallax simples diretamente ao elemento que contém um background (imagem CSS). Ele atualiza a propriedade `background-position` vertical conforme a página é rolada.
 
@@ -100,6 +108,10 @@ Aplicação em HTML:
 <div data-element="exemplo" class="b-modal">
     <div class="b-modal-content">
       <button data-modal="exemplo" data-closeModal>Fechar</button>
+      Modal 
+    </div>
+ </div>
+```
 
 ### **Modal com overlay**
 
