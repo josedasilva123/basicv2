@@ -34,50 +34,59 @@ O Basic é divido em módulos, e abaixo consta a documentação de como utilizar
 - [toggleButton](#togglebutton)
 - [menu](#menu)
 - [formulário](#formulário)
-- [colapseJS](#colapsejs)
+- [colapseJS](#colapseJS)
 - [dragAndDrop](#draganddrop)
-- [stickyBackground](#stickybackground)
-- [stickyContent](#stickycontent)
-- [videoScroll](#videoscroll)
+- [stickyBackground](#stickyBackground)
+- [videoScroll](#videoScroll)
+- [stickyContent](#stickyContent)
 
-O módulo `stickyBackground` aplica um efeito de parallax simples diretamente ao elemento que contém um background (imagem CSS). Ele atualiza a propriedade `background-position` vertical conforme a página é rolada.
+**Módulos CSS**
+- [colapse](#colapse)
 
-Comportamento observado no arquivo `js/modules/stickyBackground.js`:
-- Seleciona elementos com o seletor `[data-stickyBackground]` (observe a caixa/camelCase do atributo).
-- No evento `scroll` calcula um progresso relativo à posição do elemento na viewport: `progress = 1 - rect.top / windowHeight`.
-- Calcula um `targetOffset = clamp(progress * 60, 0, 30)` (valor final limitado entre `0` e `30`).
-- Anima suavemente `currentOffset` em direção a `targetOffset` com um easing (fator `0.04`) usando `requestAnimationFrame`.
-- Atualiza `element.style.backgroundPosition = 'center ${50 - currentOffset}%'`, ou seja, a posição vertical do background varia entre `50%` (início) e `20%` (quando offset = 30).
 
-Uso (HTML):
+## fixedOnScroll
+
+Este módulo fixa o elementos quando a rolagem atinge um deterninado valor.
+
+Opções:
+
+| Opção | Valor Padrão | Como usar |
+| ------ | ------ | ------ |
+| height | 400 | Uso  const scrollAnimation = new FixedOnScroll(550) |
+
+Aplicação em HTML:
 ```html
-<!-- O atributo correto é `data-stickyBackground` e deve ser aplicado ao próprio elemento com background -->
-<section class="hero" data-stickyBackground style="background-image: url('hero.jpg');">
-  <div class="hero-content">
-    <h1>Título</h1>
-    <p>Conteúdo que rola sobre o fundo.</p>
-  </div>
-</section>
+<div data-fixed>
+  Element
+</div>
 ```
+Attributos CSS Padrão:
 
-Exemplo CSS recomendado:
-```css
-.hero { height: 70vh; min-height: 400px; background-size: cover; background-position: center 50%; position: relative; }
-.hero-content { position: relative; z-index: 1; padding: 3rem; }
+| Atributo | Descrição |
+| ------ | ------ |
+| [data-fixed="top"] | Fixa o elemento em top: 0 |
+| [data-fixed="bottom"] | Fixa o elemento em bottom: 0 |
+
+
+## scrollAnimation
+
+Este módulo faz com que animações aconteçam ao atingir um valor relativo de rolagem.
+
+Aplicação em HTML:
+```html
+<div data-sanimation="fadeIn">
+  Element
+</div>
+<div data-sanimation="fadeInLeft">
+  Element
+</div>
+<div data-sanimation="fadeInRight">
+  Element
+</div>
 ```
-```js
-import StickyBackground from './js/modules/stickyBackground.js';
-
-const sticky = new StickyBackground();
-sticky.init();
-```
-- Combine com `background-size: cover` para melhores resultados em imagens responsivas.
-
-Se quiser, posso:
-- ajustar o módulo para aceitar atributos como `data-sticky-offset` ou `data-sticky-disable-below` (e atualizar a doc novamente);
-
 Animações Disponíveis:
 
+| Animação | Variações |
 | ------ | ------ |
 | fadeIn | fadeInLeft, fadeInRight, fadeInUp e fadeInDown |
 | zoomIn | zoomInLeft, zoomInRight, zoomInUp e zoomInDown |
@@ -110,7 +119,7 @@ Aplicação em HTML:
       <button data-modal="exemplo" data-closeModal>Fechar</button>
       Modal 
     </div>
- </div>
+</div>
 ```
 
 ### **Modal com overlay**
@@ -668,9 +677,6 @@ Com o dragAndDrop, é possível criar grupos de elementos arrasta e solta, que p
 | data-dragdirection | Pode ser `X` ou `Y` (Por default, o valor é Y) |
 | data-dropzone | Esse atributo determina o identificador da dropzone, o atributo `data-draggableelement` dos itens internos deve corresponder a este identificador |
 | data-draggableelement | Esse atributo precisa corresponder ao mesmo valor atributo `data-dropzone` **(nas zonas de drop)**, trata-se do identificador de elementos |
-
-
-------------
 
 ## stickyBackground
 
