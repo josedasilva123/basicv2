@@ -10,6 +10,7 @@ import Colapse from './modules/colapse.js'
 import StickyBackground from './modules/stickyBackground.js';
 import VideoScroll from './modules/videoScroll.js';
 import StickyContent from './modules/stickyContent.js';
+import ImageScroll from './modules/imageScroll.js';
 
 const tabs = new Tabs();
 tabs.init();
@@ -43,3 +44,6 @@ videoScroll.init();
 
 const stickyContent = new StickyContent();
 stickyContent.init();
+
+const imageScroll = new ImageScroll();
+imageScroll.init();

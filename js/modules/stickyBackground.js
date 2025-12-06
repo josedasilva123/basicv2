@@ -6,6 +6,8 @@ export default class StickyBackground {
   applyStickyBackground(element) {
     document.addEventListener("DOMContentLoaded", () => {
       const section = element;
+      const reverse = section.hasAttribute("data-stickyReverse");
+
       let currentOffset = 0;
       let targetOffset = 0;
       let ticking = false;
@@ -14,9 +16,21 @@ export default class StickyBackground {
         const rect = section.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        const progress = 1 - rect.top / windowHeight;
+        // progress baseado em toda a transição da section pela viewport
+        const scrollStart = windowHeight;
+        const scrollEnd = -rect.height;
 
-        targetOffset = Math.min(Math.max(progress * 60, 0), 30);
+        let progress = (rect.top - scrollStart) / (scrollEnd - scrollStart);
+
+        // reverse → comportamento oposto
+        if (reverse) {
+          progress = 1 - progress;
+        }
+
+        // clamp 0–1
+        progress = Math.min(Math.max(progress, 0), 1);
+
+        targetOffset = progress * 30;
 
         if (!ticking) {
           requestAnimationFrame(updateParallax);
